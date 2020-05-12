@@ -1,26 +1,20 @@
+<h1><%= @user.name %>'s Profile</h1>
 
-<% if user_signed_in? %>
-  <%= link_to 'New Post', new_post_path , class: 'btn btn-primary offset-5' %>
-<% end %>
-<div class="posts">
-  <% @posts.each do |post| %>
-    <br>
+<% @posts.each do |post| %>
   <div class="post">
     <h2><%= link_to post.title, post_path(post) %></h2>
     <p><%= post.body %></p>
-
     <% if current_user == post.user %>
       <h6><%= link_to "Delete", post_path(post), method: :delete, class: ' delete float-right',
-        data: {confirm: "Are you sure that you want to delete this post?"} %></h6>
+                      data: {confirm: "Are you sure that you want to delete this post?"} %></h6>
       <h6><%= link_to "Edit", edit_post_path(post), class: 'float-right' %> </h6>
     <% end %>
 
     <h6>
-      Post by: <%= link_to post.user.name, user_path(post.user) %>
+      Post by: <%= link_to post.user.name %>
       Created: <%= time_ago_in_words(post.created_at) %> ago
     </h6>
   </div>
-  <% end %>
-</div>
+<% end %>
 
-<%= will_paginate %>
+<%= will_paginate @posts %>
