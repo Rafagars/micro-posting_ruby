@@ -14,6 +14,11 @@ header a {
   padding: 5px;
 }
 
+header a:hover{
+  color: gray;
+  text-decoration: none;
+}
+
 body .jumbotron {
   margin-top: 2%;
   background-color: #2b3138;
@@ -42,7 +47,6 @@ body a {
 
 
 #login form, #signup form {
-
   flex-wrap: wrap;
   justify-content: center;
   padding-top: 20px;
@@ -90,4 +94,12 @@ body a {
 
 #login a, #signup a {
   padding: 10px;
+}
+
+.post {
+  box-sizing: content-box;
+  border: 2px double #22272c;
+  background-color: #2b3138;
+  margin-bottom: 5px;
+  padding: 10px 15px;
 }

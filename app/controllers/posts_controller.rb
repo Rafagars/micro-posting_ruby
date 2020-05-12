@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to posts_index_path
+      redirect_to posts_path
     else
       render 'static_pages/home'
     end
@@ -35,14 +35,14 @@ class PostsController < ApplicationController
 
     flash[:success] = "Post updated"
 
-    redirect_to posts_index_path
+    redirect_to posts_path
   end
 
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:success] = "Post deleted"
-      redirect_to posts_index_path
+      redirect_to posts_path
     else
       flash[:danger] = "Error deleting the post"
       redirect_to @post
