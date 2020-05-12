@@ -1,6 +1,6 @@
-<br>
+
 <% if user_signed_in? %>
-  <%= link_to 'New Post', new_post_path , class: 'btn btn-primary' %>
+  <%= link_to 'New Post', new_post_path , class: 'btn btn-primary offset-5' %>
 <% end %>
 <div class="posts">
   <% @posts.each do |post| %>

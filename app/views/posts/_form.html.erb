@@ -9,12 +9,12 @@
 <div class="jumbotron">
   <%= form_for(:post, html: {multipart: true}, url: yield(:url)) do |f| %>
   <p class="d-flex justify-content-center">
-    <%= f.label :title %>
+    <%= f.label :title %>:
     <%= f.text_field :title, autocomplete: 'off', class: 'form-control' %>
   </p>
   <p class="d-flex justify-content-center">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control' %>
+    <%= f.label :body %>:
+    <%= f.text_area :body, size: "30x10", class: 'form-control' %>
   </p>
   <p>
     <button class="submit btn btn-primary"><%= f.submit "Post", class: 'btn btn-primary' %></button>
