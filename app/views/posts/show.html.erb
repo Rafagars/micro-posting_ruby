@@ -22,6 +22,7 @@
 <% end %>
 <% @comments.each do |comment| %>
   <div class="comment">
+    <%= gravatar_for comment.user %>
     <h6><%= link_to comment.user.name, user_path(comment.user)  %></h6>
     <p><%= comment.body %></p>
     <% if current_user == comment.user %>

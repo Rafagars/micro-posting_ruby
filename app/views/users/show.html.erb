@@ -1,6 +1,13 @@
+<% provide(:title, @user.name) %>
+<div class="gravatar float-left"><%= gravatar_for @user %></div>
 <h1><%= @user.name %>'s Profile</h1>
+<% if user_signed_in? %>
+  <%= link_to "Settings",  edit_registration_path(current_user) %>
+<% end %>
 
+<br>
 <% @posts.each do |post| %>
+  <br>
   <div class="post">
     <h2><%= link_to post.title, post_path(post) %></h2>
     <p><%= post.body %></p>

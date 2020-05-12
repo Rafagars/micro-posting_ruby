@@ -5,6 +5,10 @@ body {
   color: white;
 }
 
+body a:hover {
+  text-decoration: none;
+}
+
 header {
   background-color: #24262d;
 }
@@ -106,4 +110,13 @@ body a {
 
 .delete {
   margin-left: 5px;
+}
+
+.comment img {
+  float: left;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+.gravatar {
+  margin-right: 5px;
 }

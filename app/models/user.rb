@@ -11,4 +11,5 @@ class User < ApplicationRecord
   def to_param
     name
   end
+
 end
