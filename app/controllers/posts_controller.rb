@@ -23,6 +23,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.paginate(page: params[:page])
   end
 
   def edit
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @post.comments.destroy_all
     if @post.destroy
       flash[:success] = "Post deleted"
       redirect_to posts_path

@@ -1,6 +1,6 @@
 <div class="post">
   <h2><%= @post.title %></h2>
-  <p><%= @post.body %>
+  <p><%= @post.body %></p>
   <p>
     <% if current_user == @post.user %>
     <h6><%= link_to "Delete", post_path(@post), method: :delete, class: ' delete float-right',
@@ -13,4 +13,21 @@
     Created: <%= time_ago_in_words(@post.created_at) %> ago
   </h6>
   </p>
+
 </div>
+
+<p> Comments (<%= @comments.count %>)</p>
+<% if user_signed_in? %>
+  <%= render 'comments/form', provide(:url, post_comments_path(@post)) %>
+<% end %>
+<% @comments.each do |comment| %>
+  <div class="comment">
+    <h6><%= link_to comment.user.name, ""  %></h6>
+    <p><%= comment.body %></p>
+    <% if current_user == comment.user %>
+      <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
+                  class: 'float-right', data: {confirm: "Are you sure that you want to delete it?"}  %>
+    <% end %>
+    <h6>Created: <%= time_ago_in_words(comment.created_at) %></h6>
+  </div>
+<% end %>

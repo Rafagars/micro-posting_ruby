@@ -1,0 +1,11 @@
+<%= form_for(:comment, url: yield(:url)) do |f| %>
+  <p>
+    <%= f.text_area :body, class: 'form-control' %>
+
+    <%= f.submit "Comment" %>
+
+    <%= f.hidden_field :post_id %>
+
+    <%= f.hidden_field :user_id %>
+  </p>
+<% end %>
