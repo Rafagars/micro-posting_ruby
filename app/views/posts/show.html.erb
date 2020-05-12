@@ -9,7 +9,7 @@
   <% end %>
 
   <h6>
-    Post by: <%= link_to @post.user.name %>
+    Post by: <%= link_to @post.user.name, user_path(@post.user) %>
     Created: <%= time_ago_in_words(@post.created_at) %> ago
   </h6>
   </p>
@@ -22,7 +22,8 @@
 <% end %>
 <% @comments.each do |comment| %>
   <div class="comment">
-    <h6><%= link_to comment.user.name, ""  %></h6>
+    <%= gravatar_for comment.user %>
+    <h6><%= link_to comment.user.name, user_path(comment.user)  %></h6>
     <p><%= comment.body %></p>
     <% if current_user == comment.user %>
       <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
@@ -31,3 +32,5 @@
     <h6>Created: <%= time_ago_in_words(comment.created_at) %></h6>
   </div>
 <% end %>
+
+<%= will_paginate @comments %>
