@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post created!"
       redirect_to posts_path
     else
-      render 'static_pages/home'
+      render 'posts/index'
     end
 
   end
