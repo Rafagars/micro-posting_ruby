@@ -1,1 +1,105 @@
 @import "bootstrap";
+
+body {
+  background-color: #262c32;
+  color: white;
+}
+
+header {
+  background-color: #24262d;
+}
+
+header a {
+  color: white;
+  padding: 5px;
+}
+
+header a:hover{
+  color: gray;
+  text-decoration: none;
+}
+
+body .jumbotron {
+  margin-top: 2%;
+  background-color: #2b3138;
+}
+
+body a {
+  text-decoration: none;
+}
+
+#login, #signup {
+  width: 400px;
+  background-color: #2b3138;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  margin: 5% 33%;
+}
+
+#login h1, #signup h1 {
+  text-align: center;
+  color: whitesmoke;
+  background-color: #24262d;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid #dee0e4;
+
+}
+
+
+#login form, #signup form {
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#login form input[type="password"], #login form input[type="text"], #login form input[type="email"],
+#signup form input[type="password"], #signup form input[type="text"], #signup form input[type="email"] {
+  width: 80%;
+  height: 30px;
+  border: 1px solid #dee0e4;
+  background-color: #2b3138;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 0 15px;
+  color: white;
+}
+
+#login form input[type="submit"],  #signup form input[type="submit"]{
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: #24262d;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#login form input[type="submit"]:hover, #signup form input[type="submit"]:hover {
+  background-color: #2b3138;
+  transition: background-color 0.2s;
+}
+
+#login form .label, #signup form .label{
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background-color: #24262d;
+  color: #ffffff;
+  padding: 5px 10px 0 10px;
+}
+
+#login a, #signup a {
+  padding: 10px;
+}
+
+.post {
+  box-sizing: content-box;
+  border: 2px double #22272c;
+  background-color: #2b3138;
+  margin-bottom: 5px;
+  padding: 10px 15px;
+}
