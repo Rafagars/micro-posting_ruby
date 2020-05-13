@@ -51,11 +51,10 @@ body a {
 
 
 #login form, #signup form {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 #login form input[type="password"], #login form input[type="text"], #login form input[type="email"],
@@ -64,16 +63,14 @@ body a {
   height: 30px;
   border: 1px solid #dee0e4;
   background-color: #2b3138;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  padding: 0 15px;
+  margin: 5px 15px 20px 5px;
   color: white;
 }
 
 #login form input[type="submit"],  #signup form input[type="submit"]{
-  width: 100%;
-  padding: 15px;
-  margin-top: 20px;
+  width: 350px;
+  padding: 10px;
+  margin: 15px 0 5px 0;
   background-color: #24262d;
   border: 0;
   cursor: pointer;
@@ -87,17 +84,21 @@ body a {
 }
 
 #login form .label, #signup form .label{
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   background-color: #24262d;
   color: #ffffff;
-  padding: 5px 10px 0 10px;
 }
 
 #login a, #signup a {
   padding: 10px;
+}
+
+.remember {
+  margin-left: 0;
 }
 
 .post, .comment {
