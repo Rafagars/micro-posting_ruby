@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def to_param
     name

@@ -2,6 +2,9 @@
   <h2><%= @post.title %></h2>
   <p><%= @post.body %></p>
   <p>
+
+    <span class="like"><%= link_to '', post_likes_path(@post), method: :post, class: 'far fa-heart' %> <%= @post.likes.count %></span>
+
     <% if current_user == @post.user %>
     <h6><%= link_to "Delete", post_path(@post), method: :delete, class: ' delete float-right',
                     data: {confirm: "Are you sure that you want to delete this post?"} %></h6>
