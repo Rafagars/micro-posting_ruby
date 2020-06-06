@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :room_messages
+  resources :rooms
   get 'likes/create'
   root 'static_pages#home'
   resources :posts do

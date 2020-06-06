@@ -1,0 +1,53 @@
+<h1>
+  <%= @room.name %>
+</h1>
+
+<div class="row">
+  <div class="col-12 col-md-3">
+    <%= render partial: 'rooms' %>
+  </div>
+
+  <div class="col">
+    <div class="chat">
+      <% @room_messages.each do |room_message| %>
+        <div class="chat-message-container">
+          <div class="row no-gutters">
+            <div class="col-auto text-center">
+              <%= gravatar_for(room_message.user) %>
+            </div>
+
+            <div class="col">
+              <div class="message-content">
+                <p class="mb-1">
+                  <%= room_message.message %>
+                </p>
+
+                <div class="text-right">
+                  <small>
+                    <%= room_message.created_at %>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= form_for @room_message, remote: true do |form| %>
+      <div class="input-group mb-3">
+        <%= form.text_field :message,
+                       wrapper: false,
+                       label: false, class: 'form-control',
+                       input_html: {
+                           class: 'chat-input'
+                       } %>
+        <div class="input-group-append">
+          <%= form.submit "Send", class: 'btn btn-primary chat-input' %>
+        </div>
+      </div>
+
+      <%= form.hidden_field :room_id %>
+    <% end %>
+  </div>
+</div>
