@@ -4,6 +4,7 @@ class RoomMessage < ApplicationRecord
 
   def as_json(options)
     super(options).merge(user_avatar_url: user.gravatar_url)
+    super(options).merge(user_name: user.name)
   end
 
 end
