@@ -11,10 +11,12 @@
     <h6><%= link_to "Edit", edit_post_path(@post), class: 'float-right' %> </h6>
   <% end %>
 
-  <h6>
+  <small>
+    <p>
     Post by: <%= link_to @post.user.name, user_path(@post.user) %>
     Created: <%= time_ago_in_words(@post.created_at) %> ago
-  </h6>
+    </p>
+  </small>
   </p>
 
 </div>
@@ -26,13 +28,13 @@
 <% @comments.each do |comment| %>
   <div class="comment">
     <%= gravatar_for comment.user %>
-    <h6><%= link_to comment.user.name, user_path(comment.user)  %></h6>
+    <h5><%= link_to comment.user.name, user_path(comment.user)  %></h5>
     <p><%= comment.body %></p>
     <% if current_user == comment.user %>
       <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
                   class: 'float-right', data: {confirm: "Are you sure that you want to delete it?"}  %>
     <% end %>
-    <h6>Created: <%= time_ago_in_words(comment.created_at) %></h6>
+    <small><p>Created: <%= time_ago_in_words(comment.created_at) %></p></small>
   </div>
 <% end %>
 

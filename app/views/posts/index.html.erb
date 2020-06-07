@@ -23,10 +23,12 @@
     <% end %>
     <span><%= link_to '', post_path(post), class: 'far fa-comment' %> <%= post.comments.count %> comments </span>
 
-    <h6>
+    <small>
+      <div>
       Post by: <%= link_to post.user.name, user_path(post.user) %>
       Created: <%= time_ago_in_words(post.created_at) %> ago
-    </h6>
+      </div>
+    </small>
   </div>
   <% end %>
 </div>
