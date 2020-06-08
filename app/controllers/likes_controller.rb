@@ -10,7 +10,7 @@ class LikesController < ApplicationController
     else
       @post.likes.create(user_id: current_user.id)
     end
-    redirect_to request.referrer
+    redirect_back(fallback_location: root_path)
   end
 
   private
