@@ -30,8 +30,8 @@ gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use mini magick to resize images
-gem 'mini_magick'
+#Use Webpacker for Javascript webpacks
+gem 'webpacker', '~> 3.5'
 
 
 # Paginate gem
