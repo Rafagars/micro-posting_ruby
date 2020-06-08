@@ -1,17 +1,27 @@
-<header id="header" class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
+<header id="header" class="navbar navbar-expand-lg ">
+  <div class="container ">
     <h1><%= link_to 'Micro-Posting', root_path %></h1>
-    <nav>
+    <nav class="collapse navbar-collapse d-flex flex-row-reverse">
+      <div class="navbar-nav">
+        <% if user_signed_in? %>
+          <%= link_to 'Chat', rooms_path, class: 'nav-link'%>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.name %>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to 'Profile', user_path(current_user), class: 'dropdown-item'  %>
+              <%= link_to "Settings",  edit_registration_path(current_user), class: 'dropdown-item' %>
+              <hr>
+              <%= link_to 'Logout', destroy_user_session_path, class: 'dropdown-item', :method => :delete  %>
+            </div>
+          </div>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to 'Login', new_user_session_path, class: 'nav-link' %>
+        <% end %>
 
-      <%= link_to 'Home', root_path %>
-      <% if user_signed_in? %>
-        <%= link_to 'Chat', rooms_path %>
-        <%= link_to 'Profile', user_path(current_user)  %>
-        <%= link_to 'Logout', destroy_user_session_path, :method => :delete  %>
-      <% else %>
-        <%= link_to 'Login', new_user_session_path %>
-      <% end %>
-
+      </div>
     </nav>
   </div>
 </header>

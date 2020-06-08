@@ -2,7 +2,7 @@
 <div class="gravatar float-left"><img src="<%= @user.gravatar_url %>"></div>
 <h1><%= @user.name %>'s Profile</h1>
 <% if user_signed_in? %>
-  <%= link_to "Settings",  edit_registration_path(current_user) %>
+  <a href="http://gravatar.com/emails" target="_blank">Change Avatar</a>
 <% end %>
 
 <br>
