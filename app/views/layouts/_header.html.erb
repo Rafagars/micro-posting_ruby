@@ -1,4 +1,4 @@
-<header id="header" class="navbar navbar-expand-lg ">
+<header id="header" class="navbar navbar-expand">
   <div class="container ">
     <h1><%= link_to 'Micro-Posting', root_path %></h1>
     <nav class="collapse navbar-collapse d-flex flex-row-reverse">
@@ -7,7 +7,7 @@
           <%= link_to 'Chat', rooms_path, class: 'nav-link'%>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.name %>
+              <img src="<%= current_user.gravatar_url %>" class="menu-avatar">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <%= link_to 'Profile', user_path(current_user), class: 'dropdown-item'  %>
