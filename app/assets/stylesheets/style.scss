@@ -101,6 +101,12 @@ body a {
   margin-left: 0;
 }
 
+.card {
+  background-color: #2b3138;
+  width: 75%;
+  margin-left: 10%;
+}
+
 .post, .comment {
   box-sizing: content-box;
   border: 2px double #22272c;
@@ -165,7 +171,7 @@ body a {
 
 }
 
-.uploads {
+.card-img-top, .uploads {
   max-width: 65%;
   height: auto;
   margin-left: 15%;
