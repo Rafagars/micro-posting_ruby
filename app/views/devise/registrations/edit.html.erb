@@ -33,7 +33,7 @@
 
   <div class="gravatar_edit">
     <br>
-    <%= gravatar_for @user %>
+    <img src="<%= @user.gravatar_url %>">
     <a href="http://gravatar.com/emails" target="_blank">Change</a>
   </div>
 

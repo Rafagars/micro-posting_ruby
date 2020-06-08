@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<div class="gravatar float-left"><%= gravatar_for @user %></div>
+<div class="gravatar float-left"><img src="<%= @user.gravatar_url %>"></div>
 <h1><%= @user.name %>'s Profile</h1>
 <% if user_signed_in? %>
   <%= link_to "Settings",  edit_registration_path(current_user) %>
@@ -21,10 +21,12 @@
     <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'far fa-heart' %> <%= post.likes.count %></span>
     <span><%= link_to '', post_path(post), class: 'far fa-comment' %> <%= post.comments.count %> comments </span>
 
-    <h6>
-      Post by: <%= link_to post.user.name %>
-      Created: <%= time_ago_in_words(post.created_at) %> ago
-    </h6>
+    <small>
+      <p>
+        Post by: <%= link_to post.user.name %>
+        Created: <%= time_ago_in_words(post.created_at) %> ago
+      </p>
+    </small>
   </div>
 <% end %>
 
