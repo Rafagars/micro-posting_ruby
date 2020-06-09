@@ -101,6 +101,19 @@ body a {
   margin-left: 0;
 }
 
+.card {
+  background-color: #2b3138;
+}
+
+.card-post {
+  width: 75%;
+  margin-left: 3%;
+}
+
+#nav-posts{
+  margin-top: 5%;
+}
+
 .post, .comment {
   box-sizing: content-box;
   border: 2px double #22272c;
@@ -165,8 +178,24 @@ body a {
 
 }
 
-.uploads {
+.card-img-top, .uploads {
   max-width: 65%;
   height: auto;
   margin-left: 15%;
+}
+
+.dropdown-toggle, .dropdown-toggle:visited{
+  background-color: #24262d;
+}
+
+.dropdown-toggle:hover, .dropdown-toggle:active, .dropdown-menu{
+  background-color: #262c32;
+}
+
+.dropdown-item{
+  color:white;
+}
+
+.menu-avatar{
+  width: 35px;
 }

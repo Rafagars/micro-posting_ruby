@@ -1,41 +1,70 @@
 
 <% if user_signed_in? %>
-  <%= link_to 'New Post', new_post_path , class: 'btn btn-primary offset-5' %>
+  <%= link_to 'New Post', new_post_path , class: 'btn btn-primary offset-4' %>
 <% end %>
+
+<!--<ul class="nav col-12 col-md-2 flex-column float-right" id="nav-posts">
+  <li class="nav-item">
+        <div class="" id="most_liked">
+          <div class="">
+            <h6>Most Liked Post</h6>
+            <h5 class="">
+              <%#= link_to @most_liked.title, post_path(@most_liked) %>
+            </h5>
+            </p>
+            <p><span class="fas fa-heart"> <%#= @most_liked.likes.count %> likes </span></p>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="" id="most_commented">
+          <div class="">
+            <h6>Most Commented Post</h6>
+            <h5 class="">
+              <%#= link_to @most_commented.title, post_path(@most_commented) %>
+            </h5>
+            </p>
+            <p><span class="fas fa-comment"> <%#= @most_commented.comments.count %> comments </span></p>
+          </div>
+        </div>
+    </li>
+  </ul>-->
+
 <div class="posts">
   <% @posts.each do |post| %>
     <br>
-  <div class="post">
-    <h2><%= link_to post.title, post_path(post) %></h2>
+ <div class="card card-post mb-2">
+   <div>
+     <% post.uploads.each do |upload| %>
+       <%= image_tag upload, class: "card-img-top" %>
+     <% end %>
+   </div>
+  <div class="card-body">
+    <h2 class="cadr-title"><%= link_to post.title, post_path(post) %></h2>
 
-    <% if current_user == post.user %>
+    <% if current_user == post.user or current_user.admin %>
       <h6><%= link_to "Delete", post_path(post), method: :delete, class: ' delete float-right',
                       data: {confirm: "Are you sure that you want to delete this post?"} %></h6>
       <h6><%= link_to "Edit", edit_post_path(post), class: 'float-right' %> </h6>
     <% end %>
 
-    <p><%= post.body %></p>
-    <div>
-      <% post.uploads.each do |upload| %>
-        <%= image_tag upload, class: "uploads" %>
-      <% end %>
-    </div>
+    <p class="card-text"><%= post.body %></p>
 
-    <% if already_liked? %>
-      <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'fas fa-heart' %> <%= post.likes.count %></span>
-    <% else %>
-      <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'far fa-heart' %> <%= post.likes.count %></span>
-    <% end %>
+    <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(post), method: :post, class: post.liked , 'data-action' => 'click->heart#like' %> <%= post.likes.count %></span>
+
     <span><%= link_to '', post_path(post), class: 'far fa-comment' %> <%= post.comments.count %> comments </span>
 
     <small>
       <div>
       Post by: <%= link_to post.user.name, user_path(post.user) %>
-      Created: <%= time_ago_in_words(post.created_at) %> ago
+      Created: <%= local_time_ago(post.created_at) %>
       </div>
     </small>
   </div>
-  <% end %>
+ </div>
+<% end %>
+</div>
+
 </div>
 
 <%= will_paginate %>

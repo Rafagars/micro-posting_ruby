@@ -30,9 +30,11 @@ gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use mini magick to resize images
-gem 'mini_magick'
+# Use Webpacker for Javascript webpacks
+gem 'webpacker', '~> 3.5'
 
+# Local Time  to display times and dates to users in their local time
+gem 'local_time'
 
 # Paginate gem
 gem 'will_paginate',           '~> 3.1.6'
