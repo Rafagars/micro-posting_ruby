@@ -1,9 +1,20 @@
 <% provide(:title, @user.name) %>
-<div class="gravatar float-left"><img src="<%= @user.gravatar_url %>"></div>
+<div class="gravatar float-left">
+  <% if user_signed_in? %>
+    <a href="http://gravatar.com/emails" target="_blank"><img src="<%= @user.gravatar_url %>"></a>
+  <% else %>
+    <img src="<%= @user.gravatar_url %>">
+  <% end %>
+</div>
 <h1><%= @user.name %>'s Profile</h1>
-<% if user_signed_in? %>
-  <a href="http://gravatar.com/emails" target="_blank">Change Avatar</a>
-<% end %>
+<p>Number of posts: <%= @user.posts.count %></p>
+<small>
+  <p>
+    <span class="fas fa-heart" style="margin-right: 5px;">&ensp;<%= @user.likes.count %> posts liked</span>
+    <span class="fas fa-comment">&ensp;<%= @user.comments.count %> posts commented</span>
+  </p>
+</small>
+
 
 <br>
 <% @posts.each do |post| %>
@@ -31,7 +42,7 @@
       <small>
         <p>
           Post by: <%= link_to post.user.name %>
-          Created: <%= time_ago_in_words(post.created_at) %> ago
+          Created: <%= local_time_ago(post.created_at) %>
         </p>
       </small>
     </div>

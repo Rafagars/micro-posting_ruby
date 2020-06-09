@@ -20,7 +20,7 @@
   <small>
     <p>
     Post by: <%= link_to @post.user.name, user_path(@post.user) %>
-    Created: <%= time_ago_in_words(@post.created_at) %> ago
+    Created: <%= local_time_ago(@post.created_at) %>
     </p>
   </small>
   </p>
@@ -40,7 +40,7 @@
       <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
                   class: 'float-right', data: {confirm: "Are you sure that you want to delete it?"}  %>
     <% end %>
-    <small><p>Created: <%= time_ago_in_words(comment.created_at) %></p></small>
+    <small><p>Created: <%= local_time_ago(comment.created_at) %></p></small>
   </div>
 <% end %>
 

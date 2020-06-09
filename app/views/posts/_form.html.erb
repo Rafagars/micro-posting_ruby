@@ -9,15 +9,12 @@
 <div class="jumbotron">
   <%= form_for(:post, html: {multipart: true}, url: yield(:url)) do |f| %>
   <p class="d-flex justify-content-center">
-    <%= f.label :title %>:
-    <%= f.text_field :title, autocomplete: 'off', class: 'form-control' %>
+    <%= f.text_field :title, autocomplete: 'off', class: 'form-control', placeholder: 'Title' %>
   </p>
   <p class="d-flex justify-content-center">
-    <%= f.label :body %>:
     <%= f.text_area :body, size: "30x10", class: 'form-control' %>
   </p>
     <p class="d-flex justify-content-center">
-      <%= f.label :uploads %>:
       <%= f.file_field :uploads, multiple: true, class: 'form-control' %>
     </p>
   <p>

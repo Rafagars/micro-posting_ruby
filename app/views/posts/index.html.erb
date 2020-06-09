@@ -3,11 +3,11 @@
   <%= link_to 'New Post', new_post_path , class: 'btn btn-primary offset-5' %>
 <% end %>
 
-<ul class="nav col-12 col-md-2 col-lg-3 flex-column float-right" id="nav-posts">
+<ul class="nav col-12 col-md-2 flex-column float-right" id="nav-posts">
   <li class="nav-item">
         <div class="" id="most_liked">
           <div class="">
-            <h6>Most Liked Post</h3>
+            <h6>Most Liked Post</h6>
             <h5 class="">
               <%= link_to @most_liked.title, post_path(@most_liked) %>
             </h5>
@@ -57,7 +57,7 @@
     <small>
       <div>
       Post by: <%= link_to post.user.name, user_path(post.user) %>
-      Created: <%= time_ago_in_words(post.created_at) %> ago
+      Created: <%= local_time_ago(post.created_at) %>
       </div>
     </small>
   </div>
