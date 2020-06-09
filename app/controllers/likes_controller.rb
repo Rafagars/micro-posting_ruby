@@ -6,9 +6,11 @@ class LikesController < ApplicationController
   def create
     if already_liked?
       @like = Like.find_by(params[:user_id])
+      @post.update(liked: 'far fa-heart')
       @like.destroy
     else
       @post.likes.create(user_id: current_user.id)
+      @post.update(liked: 'fas fa-heart')
     end
     redirect_back(fallback_location: root_path)
   end

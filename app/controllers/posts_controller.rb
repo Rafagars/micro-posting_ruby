@@ -8,8 +8,8 @@ class PostsController < ApplicationController
       redirect_to root_path
     end
     @posts = Post.paginate(page: params[:page])
-    @most_liked = Post.order(:likes).first
-    @most_commented = Post.order(:comments).first
+    #@most_liked = Post.order(:likes).first
+    #@most_commented = Post.order(:comments).first
   end
 
   def new
