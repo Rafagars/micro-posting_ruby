@@ -40,6 +40,11 @@
       <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
                   class: 'float-right', data: {confirm: "Are you sure that you want to delete it?"}  %>
     <% end %>
+    <span class="like" data-controller = "heart">
+      <%= link_to '', post_comment_hearts_path(post_id: @post.id, comment_id: comment.id), method: :post, class: comment.liked , 'data-action' => 'click->heart#like' %>
+      <%= comment.hearts.count %>
+    </span>
+
     <small><p>Created: <%= local_time_ago(comment.created_at) %></p></small>
   </div>
 <% end %>
