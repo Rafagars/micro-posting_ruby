@@ -33,7 +33,7 @@
 <div class="posts">
   <% @posts.each do |post| %>
     <br>
- <div class="card card-post mb-2">
+ <div class="card card-post mb-2 col-12 col-md-8">
    <div>
      <% post.uploads.each do |upload| %>
        <%= image_tag upload, class: "card-img-top" %>
