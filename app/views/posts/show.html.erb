@@ -15,7 +15,7 @@
   </div>
   <p>
 
-    <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(@post), method: :post, class: 'far fa-heart', 'data-action' => 'click->heart#like' %> <%= @post.likes.count %></span>
+    <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(@post), method: :post, class: @post.liked , 'data-action' => 'click->heart#like' %> <%= @post.likes.count %></span>
 
   <small>
     <p>
