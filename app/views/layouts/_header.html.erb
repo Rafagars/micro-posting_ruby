@@ -4,7 +4,7 @@
     <nav class="collapse navbar-collapse d-flex flex-row-reverse">
       <div class="navbar-nav">
         <% if user_signed_in? %>
-          <#= link_to 'Chat', rooms_path, class: 'nav-link'%>
+          
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="<%= current_user.gravatar_url %>" class="menu-avatar">
