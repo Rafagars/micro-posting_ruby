@@ -7,12 +7,15 @@
 
 
 <div class="jumbotron">
-  <%= form_for(:post, html: {multipart: true}, url: yield(:url)) do |f| %>
+  <%= form_for(:post, html: {multipart: true}, data: {controller: "characters", action: "ajax:beforeSend->characters#submit"}, url: yield(:url)) do |f| %>
   <p class="d-flex justify-content-center">
     <%= f.text_field :title, autocomplete: 'off', class: 'form-control', placeholder: 'Title' %>
   </p>
   <p class="d-flex justify-content-center">
-    <%= f.text_area :body, size: "30x10", class: 'form-control' %>
+    <%= f.text_area :body, size: "30x10", class: 'form-control', data: { target: "characters.body", action: "keyup->characters#update"} %>
+    <div class="col-sm-6">
+      <span data-target="characters.characterCount"></span>
+    </div>
   </p>
     <p class="d-flex justify-content-center">
       <%= f.file_field :uploads, multiple: true, class: 'form-control' %>

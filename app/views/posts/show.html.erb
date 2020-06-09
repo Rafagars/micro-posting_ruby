@@ -31,22 +31,25 @@
 <% if user_signed_in? %>
   <%= render 'comments/form', provide(:url, post_comments_path(@post)) %>
 <% end %>
-<% @comments.each do |comment| %>
-  <div class="comment">
-    <img src="<%= comment.user.gravatar_url %>" class="avatar">
-    <h5><%= link_to comment.user.name, user_path(comment.user)  %></h5>
-    <p><%= comment.body %></p>
-    <% if current_user == comment.user or current_user.admin %>
-      <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
-                  class: 'float-right', data: {confirm: "Are you sure that you want to delete it?"}  %>
-    <% end %>
-    <span class="like" data-controller = "heart">
+<div id="comments">
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <img src="<%= comment.user.gravatar_url %>" class="avatar">
+      <h5><%= link_to comment.user.name, user_path(comment.user)  %></h5>
+      <p data-action="click->comment#log"><%= comment.body %></p>
+      <% if current_user == comment.user or current_user.admin %>
+        <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
+                    class: 'float-right', data: {confirm: "Are you sure that you want to delete it?"}  %>
+      <% end %>
+      <span class="like" data-controller = "heart">
       <%= link_to '', post_comment_hearts_path(post_id: @post.id, comment_id: comment.id), method: :post, class: comment.liked , 'data-action' => 'click->heart#like' %>
-      <%= comment.hearts.count %>
+        <%= comment.hearts.count %>
     </span>
 
-    <small><p>Created: <%= local_time_ago(comment.created_at) %></p></small>
-  </div>
-<% end %>
+      <small><p>Created: <%= local_time_ago(comment.created_at) %></p></small>
+    </div>
+  <% end %>
+</div>
+
 
 <%= will_paginate @comments %>
