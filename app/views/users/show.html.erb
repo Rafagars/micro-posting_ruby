@@ -6,8 +6,12 @@
     <img src="<%= @user.gravatar_url %>">
   <% end %>
 </div>
-<h1><%= @user.name %>'s Profile</h1>
-<p>Number of posts: <%= @user.posts.count %></p>
+  <% if @user.admin %>
+    <h1><%= @user.name %>'s Profile [Admin]</h1>
+  <% else %>
+    <h1><%= @user.name %>'s Profile</h1>
+  <% end %>
+  <p>Number of posts: <%= @user.posts.count %></p>
 <small>
   <p>
     <span class="fas fa-heart" style="margin-right: 5px;">&ensp;<%= @user.likes.count %> posts liked</span>
