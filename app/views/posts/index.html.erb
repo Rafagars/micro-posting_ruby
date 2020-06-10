@@ -12,7 +12,7 @@
               <%#= link_to @most_liked.title, post_path(@most_liked) %>
             </h5>
             </p>
-            <p><span class="fas fa-heart"> <%#= @most_liked.likes.count %> likes </span></p>
+            <p><span class="fas fa-heart"> <%##= @most_liked.likes.count %> likes </span></p>
           </div>
         </div>
       </li>
@@ -24,7 +24,7 @@
               <%#= link_to @most_commented.title, post_path(@most_commented) %>
             </h5>
             </p>
-            <p><span class="fas fa-comment"> <%#= @most_commented.comments.count %> comments </span></p>
+            <p><span class="fas fa-comment"> <%##= @most_commented.comments.count %> comments </span></p>
           </div>
         </div>
     </li>
@@ -33,7 +33,7 @@
 <div class="posts">
   <% @posts.each do |post| %>
     <br>
- <div class="card card-post mb-2">
+ <div class="card col-12 col-md-9 mb-2">
    <div>
      <% post.uploads.each do |upload| %>
        <%= image_tag upload, class: "card-img-top" %>
@@ -42,13 +42,13 @@
   <div class="card-body">
     <h2 class="cadr-title"><%= link_to post.title, post_path(post) %></h2>
 
+    <p class="card-text"><%= post.body %></p>
+
     <% if current_user == post.user or current_user.admin %>
       <h6><%= link_to "Delete", post_path(post), method: :delete, class: ' delete float-right',
                       data: {confirm: "Are you sure that you want to delete this post?"} %></h6>
       <h6><%= link_to "Edit", edit_post_path(post), class: 'float-right' %> </h6>
     <% end %>
-
-    <p class="card-text"><%= post.body %></p>
 
     <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(post), method: :post, class: post.liked , 'data-action' => 'click->heart#like' %> <%= post.likes.count %></span>
 

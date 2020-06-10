@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
     @comment.user_id = current_user.id
+    @comment.liked = 'far fa-heart'
     if @comment.save
       redirect_to post_path(@post)
     elsif @comment.body

@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_181602) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "liked"
+    t.string "liked", default: "far fa-heart"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id", "post_id", "created_at"], name: "index_comments_on_user_id_and_post_id_and_created_at"
     t.index ["user_id"], name: "index_comments_on_user_id"
