@@ -1,13 +1,8 @@
-<%= form_for(:comment, data: {controller: "characters", action: "ajax:beforeSend->characters#submit"}, url: yield(:url)) do |f| %>
-  <p>
-    <%= f.text_area :body, class: 'form-control', data: { target: "characters.body", action: "keyup->characters#update"} %>
+<p>
+  <%= f.text_area :body,  size: "100x2", data: { target: "characters.body", action: "keyup->characters#update"} %>
+<p>
+  <%= f.submit "Comment", class:'btn btn-primary'%>
 
-    <%= f.submit "Comment", class:'btn btn-primary'%>
-
-    <span data-target="characters.characterCount"></span>
-
-    <%= f.hidden_field :post_id %>
-
-    <%= f.hidden_field :user_id %>
-  </p>
-<% end %>
+  <span data-target="characters.characterCount"></span>
+</p>
+</p>

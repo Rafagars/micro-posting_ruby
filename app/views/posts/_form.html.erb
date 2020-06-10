@@ -1,28 +1,12 @@
-
-<div class="d-flex justify-content-center">
-  <div class="spinner-border text-primary d-none" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>
-
-
-<div class="jumbotron">
-  <%= form_for(:post, html: {multipart: true}, data: {controller: "characters", action: "ajax:beforeSend->characters#submit"}, url: yield(:url)) do |f| %>
-  <p class="d-flex justify-content-center">
-    <%= f.text_field :title, autocomplete: 'off', class: 'form-control', placeholder: 'Title' %>
-  </p>
-  <p class="d-flex justify-content-center">
-    <%= f.text_area :body, size: "30x10", class: 'form-control', data: { target: "characters.body", action: "keyup->characters#update"} %>
-    <div class="col-sm-6">
-      <span data-target="characters.characterCount"></span>
-    </div>
-  </p>
-    <p class="d-flex justify-content-center">
-      <%= f.file_field :uploads, multiple: true, class: 'form-control' %>
-    </p>
-  <p>
-    <button class="submit btn btn-primary"><%= f.submit "Post", class: 'btn btn-primary' %></button>
-    <%= f.hidden_field :user_id %>
-  </p>
-  <% end %>
-</div>
+<p class="d-flex justify-content-center">
+  <%= f.text_field :title, autocomplete: 'off', class: 'form-control' %>
+</p>
+<p class="d-flex justify-content-center">
+  <%= f.text_area :body, size: "30x10", class: 'form-control' %>
+</p>
+<p class="d-flex justify-content-center">
+  <%= f.file_field :uploads, multiple: true, class: 'form-control' %>
+</p>
+<p>
+  <button class="submit btn btn-primary"><%= f.submit "Post", class: 'btn btn-primary' %></button>
+</p>

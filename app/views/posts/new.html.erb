@@ -1,2 +1,13 @@
-<br>
-<%= render 'posts/form', provide(:url, posts_path(@current_user)) %>
+
+<div class="d-flex justify-content-center">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+
+<div class="jumbotron">
+  <%= form_for(:post, html: {multipart: true}, url: posts_path, method: :post) do |f| %>
+    <%= render 'posts/form' %>
+  <% end %>
+</div>

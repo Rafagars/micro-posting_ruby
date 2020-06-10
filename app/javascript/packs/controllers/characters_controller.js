@@ -5,20 +5,14 @@ export default class extends Controller {
 
     initialize() {
         this.update()
-        console.log('update')
+
     }
 
     update() {
-        console.log('It enter the function')
-        let message = ''
-        let count = this.bodyTarget.value.length
-        if (count == 1){
-             message = "1 character"
-        } else {
-             message = `${count} characters`
-        }
 
-        this.characterCountTarget.textContent = message
+        let count = this.bodyTarget.value.length
+
+        this.characterCountTarget.textContent = `${count}/300 characters`
 
         if (count > 300){
             this.characterCountTarget.classList.add("text-danger")

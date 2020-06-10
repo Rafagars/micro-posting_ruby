@@ -29,18 +29,41 @@
 
 <p> Comments (<%= @comments.count %>)</p>
 <% if user_signed_in? %>
-  <%= render 'comments/form', provide(:url, post_comments_path(@post)) %>
+  <%= form_for(:comment, data: {controller: "characters", action: "ajax:beforeSend->characters#submit", target: "edit.form" }, url: post_comments_path(@post)) do |f| %>
+
+      <%= f.text_area :body,  size: "100x2", data: { target: "characters.body", action: "keyup->characters#update"} %>
+    <p>
+      <%= f.submit "Comment", class:'btn btn-primary'%>
+
+      <span data-target="characters.characterCount"></span>
+    </p>
+
+  <% end %>
 <% end %>
 <div id="comments">
   <% @comments.each do |comment| %>
-    <div class="comment">
+    <div id="<%= dom_id(comment) %>" class="comment" data-controller="edit">
       <img src="<%= comment.user.gravatar_url %>" class="avatar">
       <h5><%= link_to comment.user.name, user_path(comment.user)  %></h5>
-      <p data-action="click->comment#log"><%= comment.body %></p>
+      <p data-target="edit.body"><%= comment.body %></p>
+
+      <div class="d-none">
+        <%= form_for(:comment, data: {controller: "characters", action: "ajax:beforeSend->characters#submit", target: "edit.form" }, url: post_comment_path(post_id: @post.id, id: comment.id), method: :patch)do |f| %>
+            <%= f.text_area :body,  size: "100x2", data: { target: "characters.body", action: "keyup->characters#update"} %>
+          <p>
+            <%= f.submit "Comment", class:'btn btn-primary'%>
+
+            <span data-target="characters.characterCount"></span>
+          </p>
+      <% end %>
+      </div>
+
       <% if current_user == comment.user or current_user.admin %>
         <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
                     class: 'float-right', data: {confirm: "Are you sure that you want to delete it?"}  %>
+        <a data-action="click->edit#toggle" class="float-right">Edit |</a>
       <% end %>
+
       <span class="like" data-controller = "heart">
       <%= link_to '', post_comment_hearts_path(post_id: @post.id, comment_id: comment.id), method: :post, class: comment.liked , 'data-action' => 'click->heart#like' %>
         <%= comment.hearts.count %>
