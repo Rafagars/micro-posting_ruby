@@ -14,16 +14,21 @@
     <% end %>
   </div>
   <p>
-
-    <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(@post), method: :post, class: @post.liked , 'data-action' => 'click->heart#like' %> <%= @post.likes.count %></span>
-
-  <small>
-    <p>
-    Post by: <%= link_to @post.user.name, user_path(@post.user) %>
-    Created: <%= local_time_ago(@post.created_at) %>
+  <% if post_already_liked(@post.id) %>
+      <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(@post), method: :post, class: 'fas fa-heart' , 'data-action' => 'click->heart#like' %> <%= @post.likes.count %></span>
+  <% else  %>
+      <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(@post), method: :post, class: 'far fa-heart' , 'data-action' => 'click->heart#like' %> <%= @post.likes.count %></span>
+  <% end %>
+    <small>
+      <p>
+      Post by: <%= link_to @post.user.name, user_path(@post.user) %>
+      Created: <%= local_time_ago(@post.created_at) %>
+        <% if @post.created_at != @post.updated_at %>
+         | Updated: <%= local_time_ago(@post.updated_at) %>
+        <%end %>
+      </p>
+    </small>
     </p>
-  </small>
-  </p>
 
 </div>
 
@@ -31,7 +36,7 @@
 <% if user_signed_in? %>
   <%= form_for(:comment, data: {controller: "characters", action: "ajax:beforeSend->characters#submit", target: "edit.form" }, url: post_comments_path(@post)) do |f| %>
 
-      <%= f.text_area :body,  size: "100x2", data: { target: "characters.body", action: "keyup->characters#update"} %>
+      <%= f.text_area :body,  class: "form-control", data: { target: "characters.body", action: "keyup->characters#update"} %>
     <p>
       <%= f.submit "Comment", class:'btn btn-primary'%>
 
@@ -64,12 +69,21 @@
         <a data-action="click->edit#toggle" class="float-right">Edit |</a>
       <% end %>
 
-      <span class="like" data-controller = "heart">
-      <%= link_to '', post_comment_hearts_path(post_id: @post.id, comment_id: comment.id), method: :post, class: comment.liked , 'data-action' => 'click->heart#like' %>
-        <%= comment.hearts.count %>
-    </span>
+      <% if comment_already_liked(comment.id) %>
+        <span class="like" data-controller = "heart">
+        <%= link_to '', post_comment_hearts_path(post_id: @post.id, comment_id: comment.id), method: :post, class: 'fas fa-heart' , 'data-action' => 'click->heart#like' %>
+                <%= comment.hearts.count %>
+        </span>
+      <% else %>
+                <span class="like" data-controller = "heart">
+        <%= link_to '', post_comment_hearts_path(post_id: @post.id, comment_id: comment.id), method: :post, class: 'far fa-heart' , 'data-action' => 'click->heart#like' %>
+                  <%= comment.hearts.count %>
+        </span>
+      <% end %>
 
-      <small><p>Created: <%= local_time_ago(comment.created_at) %></p></small>
+      <small>
+        <p>Created: <%= local_time_ago(comment.created_at) %> | Updated: <%= local_time_ago(comment.updated_at) %></p>
+      </small>
     </div>
   <% end %>
 </div>
