@@ -33,7 +33,7 @@ body a {
 }
 
 #login, #signup {
-  width: 400px;
+  max-width: 400px;
   background-color: #2b3138;
   box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
   margin: 5% 33%;
@@ -182,6 +182,11 @@ body a {
   max-width: 65%;
   height: auto;
   margin-left: 15%;
+}
+
+.uploads-preview{
+  max-width: 300px;
+  height: auto;
 }
 
 .dropdown-toggle, .dropdown-toggle:visited{

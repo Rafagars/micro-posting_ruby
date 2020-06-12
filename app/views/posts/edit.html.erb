@@ -1,4 +1,3 @@
-
 <div class="d-flex justify-content-center">
   <div class="spinner-border text-primary" role="status">
     <span class="sr-only">Loading...</span>
@@ -14,6 +13,11 @@
   <p class="d-flex justify-content-center">
     <%= f.text_area :body, size: "30x10", class: 'form-control' %>
   </p>
+    <div class="d-flex justify-content-start">
+      <% @post.uploads.each do |upload| %>
+        <%= image_tag upload, class: "uploads-preview" %>
+      <% end %>
+    </div>
     <p class="d-flex justify-content-center">
       <%= f.file_field :uploads, multiple: true, class: 'form-control' %>
     </p>

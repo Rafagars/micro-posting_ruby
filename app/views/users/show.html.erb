@@ -40,13 +40,20 @@
 
       <p class="card-text"><%= post.body %></p>
 
-      <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(post), method: :post, class: post.liked , 'data-action' => 'click->heart#like' %> <%= post.likes.count %></span>
+      <% if post_already_liked(post.id) %>
+        <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(post), method: :post, class: 'fas fa-heart' , 'data-action' => 'click->heart#like' %> <%= post.likes.count %></span>
+      <% else  %>
+        <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(post), method: :post, class: 'far fa-heart' , 'data-action' => 'click->heart#like' %> <%= post.likes.count %></span>
+      <% end %>
       <span><%= link_to '', post_path(post), class: 'far fa-comment' %> <%= post.comments.count %> comments </span>
 
       <small>
         <p>
           Post by: <%= link_to post.user.name %>
           Created: <%= local_time_ago(post.created_at) %>
+          <% if post.created_at != post.updated_at %>
+            | Updated: <%= local_time_ago(post.updated_at) %>
+          <%end %>
         </p>
       </small>
     </div>

@@ -4,13 +4,11 @@ class LikesController < ApplicationController
   include ApplicationHelper
 
   def create
-    if already_liked?
+    if post_already_liked(@post.id)
       @like = Like.find_by(params[:user_id])
-      @post.update(liked: 'far fa-heart')
       @like.destroy
     else
       @post.likes.create(user_id: current_user.id)
-      @post.update(liked: 'fas fa-heart')
     end
     redirect_back(fallback_location: root_path)
   end
