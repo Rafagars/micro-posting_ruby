@@ -53,7 +53,7 @@
       <p data-target="edit.body"><%= comment.body %></p>
 
       <div class="d-none">
-        <%= form_for(:comment, data: {controller: "characters", action: "ajax:beforeSend->characters#submit", target: "edit.form" }, url: post_comment_path(post_id: @post.id, id: comment.id), method: :patch)do |f| %>
+        <%= form_for( comment, data: {controller: "characters", action: "ajax:beforeSend->characters#submit", target: "edit.form" }, url: post_comment_path(post_id: @post.id, id: comment.id), method: :patch)do |f| %>
             <%= f.text_area :body,  size: "100x2", data: { target: "characters.body", action: "keyup->characters#update"} %>
           <p>
             <%= f.submit "Comment", class:'btn btn-primary'%>
