@@ -1,13 +1,11 @@
-<%= form_for(:post, html: {multipart: true}, url: yield(:url)) do |f| %>
+<%= form_for(:post, html: {multipart: true}, url:  posts_path(@current_user)) do |f| %>
   <p class="d-flex justify-content-center">
     <%= f.text_field :title, autocomplete: 'off', class: 'form-control' %>
   </p>
-  <p class="d-flex justify-content-center">
-    <%= f.text_area :body, size: "30x10", class: 'form-control' %>
+  <p class="field">
+    <%= f.rich_text_area :content %>
   </p>
-  <p class="d-flex justify-content-center">
-    <%= f.file_field :uploads, multiple: true, class: 'form-control' %>
-  </p>
+
   <p>
     <button class="submit btn btn-primary"><%= f.submit "Post", class: 'btn btn-primary' %></button>
   </p>

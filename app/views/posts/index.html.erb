@@ -3,46 +3,16 @@
   <%= link_to 'New Post', new_post_path , class: 'btn btn-primary offset-4' %>
 <% end %>
 
-<!--<ul class="nav col-12 col-md-2 flex-column float-right" id="nav-posts">
-  <li class="nav-item">
-        <div class="" id="most_liked">
-          <div class="">
-            <h6>Most Liked Post</h6>
-            <h5 class="">
-              <%#= link_to @most_liked.title, post_path(@most_liked) %>
-            </h5>
-            </p>
-            <p><span class="fas fa-heart"> <%##= @most_liked.likes.count %> likes </span></p>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <div class="" id="most_commented">
-          <div class="">
-            <h6>Most Commented Post</h6>
-            <h5 class="">
-              <%#= link_to @most_commented.title, post_path(@most_commented) %>
-            </h5>
-            </p>
-            <p><span class="fas fa-comment"> <%##= @most_commented.comments.count %> comments </span></p>
-          </div>
-        </div>
-    </li>
-  </ul>-->
 
 <div class="posts">
   <% @posts.each do |post| %>
     <br>
  <div class="card col-12 col-md-9 mb-2">
-   <div>
-     <% post.uploads.each do |upload| %>
-       <%= image_tag upload, class: "card-img-top" %>
-     <% end %>
-   </div>
+
   <div class="card-body">
     <h2 class="cadr-title"><%= link_to post.title, post_path(post) %></h2>
 
-    <p class="card-text"><%= post.body %></p>
+    <p class=""><%= post.content %></p>
 
     <% if current_user == post.user or current_user.admin %>
       <h6><%= link_to "Delete", post_path(post), method: :delete, class: ' delete float-right',

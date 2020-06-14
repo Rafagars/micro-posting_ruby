@@ -7,27 +7,22 @@
     <h6><%= link_to "Edit", edit_post_path(@post), class: 'float-right' %> </h6>
   <% end %>
 
-  <p><%= @post.body %></p>
-  <div>
-    <% @post.uploads.each do |upload| %>
-      <%= image_tag upload, class: "uploads" %>
-    <% end %>
-  </div>
+  <p><%= @post.content %></p>
   <p>
   <% if post_already_liked(@post.id) %>
       <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(@post), method: :post, class: 'fas fa-heart' , 'data-action' => 'click->heart#like' %> <%= @post.likes.count %></span>
   <% else  %>
       <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(@post), method: :post, class: 'far fa-heart' , 'data-action' => 'click->heart#like' %> <%= @post.likes.count %></span>
   <% end %>
-    <small>
-      <p>
+    </p>
+    <p>
+      <small>
       Post by: <%= link_to @post.user.name, user_path(@post.user) %>
       Created: <%= local_time_ago(@post.created_at) %>
         <% if @post.created_at != @post.updated_at %>
          | Updated: <%= local_time_ago(@post.updated_at) %>
         <%end %>
-      </p>
-    </small>
+        </small>
     </p>
 
 </div>
