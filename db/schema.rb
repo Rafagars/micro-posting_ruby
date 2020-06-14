@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_181214) do
+ActiveRecord::Schema.define(version: 2020_06_14_203647) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_06_14_181214) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "liked", default: "far fa-heart"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id", "post_id", "created_at"], name: "index_comments_on_user_id_and_post_id_and_created_at"
     t.index ["user_id"], name: "index_comments_on_user_id"
@@ -75,12 +74,10 @@ ActiveRecord::Schema.define(version: 2020_06_14_181214) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.text "body"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.string "liked", default: "far fa-heart"
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

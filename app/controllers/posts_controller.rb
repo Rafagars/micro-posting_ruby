@@ -21,6 +21,9 @@ class PostsController < ApplicationController
     if @post.save
       flash[:success] = "Post created!"
       redirect_to posts_path
+    elsif @post.title
+      flash[:warning] = "Title can't be blank"
+      redirect_back(fallback_location: new_post_path)
     else
       render 'posts/index'
     end
@@ -38,11 +41,14 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-
-    flash[:success] = "Post updated"
-
-    redirect_to posts_path
+    if @post.update(post_params)
+      flash[:success] = "Post updated"
+      redirect_to posts_path
+    elsif @post.title
+      flash[:warning] = "Title can't be blank"
+      redirect_back(fallback_location: post_path)
+    end
+      
   end
 
   def destroy
