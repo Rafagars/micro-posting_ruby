@@ -27,10 +27,11 @@ class CommentsController < ApplicationController
   def update
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    @comment.update(comment_params)
-
-    flash[:success] = "Comment updated"
-
+    if @comment.update(comment_params)
+      flash[:success] = "Comment updated"
+    else
+      flash[:warning] = "You can't make a blank comment"
+    end
     redirect_to @post
   end
 
