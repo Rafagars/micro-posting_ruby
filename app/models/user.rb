@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :hearts, dependent: :destroy
 
   def to_param
-    name
+    name #We replace id for name to be able to show it in the route
   end
 
   def gravatar_url

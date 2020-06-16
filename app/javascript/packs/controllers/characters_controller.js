@@ -1,5 +1,7 @@
 import { Controller } from "stimulus"
 
+//Show the number of characaters the user has typed in the text field
+
 export default class extends Controller {
     static targets = [ "body", "characterCount" ]
 

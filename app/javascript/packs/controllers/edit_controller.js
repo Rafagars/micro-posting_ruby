@@ -1,5 +1,7 @@
 import { Controller } from "stimulus"
 
+// Shows form without redirecting
+
 export default class extends Controller{
     static targets = ["body", "form"]
 

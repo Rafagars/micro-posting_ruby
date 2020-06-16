@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
 
   def to_param
-    "#{id}-#{slug}"
+    "#{id}-#{slug}" #So in the route for the post appears its unique slug instead of its id
   end
 
   def set_slug

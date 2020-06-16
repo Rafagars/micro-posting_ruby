@@ -1,3 +1,4 @@
+// Upload to the chat the message catched from room.js
 $(document).on('turbolinks:load', function () {
     $(function(){
         $('[data-channel-subscribe="room"]').each(function (index, element) {
