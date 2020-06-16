@@ -1,5 +1,7 @@
 <div class="post">
-  <h2><%= @post.title %></h2>
+  <h2 class="text-center"><%= @post.title %></h2>
+
+  <p><%= @post.content %></p>
 
   <% if current_user == @post.user or current_user.admin %>
     <h6><%= link_to "Delete", post_path(@post), method: :delete, class: ' delete float-right',
@@ -7,7 +9,6 @@
     <h6><%= link_to "Edit", edit_post_path(@post), class: 'float-right' %> </h6>
   <% end %>
 
-  <p><%= @post.content %></p>
   <p>
   <% if post_already_liked(@post.id) %>
       <span class="like" data-controller = "heart"><%= link_to '', post_likes_path(@post), method: :post, class: 'fas fa-heart' , 'data-action' => 'click->heart#like' %> <%= @post.likes.count %></span>
