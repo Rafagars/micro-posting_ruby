@@ -5,7 +5,7 @@ class HeartsController < ApplicationController
 
   def create
     if comment_already_liked(@comment.id)
-      @heart = Heart.find_by(params[:user_id])
+      @heart = Heart.find_by(user_id: current_user.id, comment_id: @comment.id)
       @heart.destroy
     else
       @comment.hearts.create(user_id: current_user.id)
