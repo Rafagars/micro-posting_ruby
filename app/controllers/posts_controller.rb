@@ -20,8 +20,8 @@ class PostsController < ApplicationController
       flash[:success] = "Post created!"
       redirect_to posts_path
     elsif @post.title
-      flash[:warning] = "Title can't be blank"
-      redirect_back(fallback_location: new_post_path)
+      flash.now[:warning] = "Title can't be blank"
+      render action: 'new'
     else
       render 'posts/index'
     end
@@ -43,8 +43,8 @@ class PostsController < ApplicationController
       flash[:success] = "Post updated"
       redirect_to posts_path
     elsif @post.title
-      flash[:warning] = "Title can't be blank"
-      redirect_back(fallback_location: post_path)
+      flash.now[:warning] = "Title can't be blank"
+      render action: 'edit'
     end
       
   end
