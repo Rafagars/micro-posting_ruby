@@ -39,14 +39,17 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
+    if current_user.id != @post.user_id 
+      flash[:warning] = "You aren't the post user"
+      redirect_to root_path
+    elsif @post.update(post_params)
       flash[:success] = "Post updated"
-      redirect_to posts_path
+      redirect_to post_path
     elsif @post.title
       flash.now[:warning] = "Title can't be blank"
       render action: 'edit'
     end
-      
+ 
   end
 
   def destroy

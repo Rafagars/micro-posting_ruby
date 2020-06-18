@@ -27,7 +27,9 @@ class CommentsController < ApplicationController
   def update
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    if @comment.update(comment_params)
+    if current_user.id != @comment.user_id
+      flash[:warning] = "You aren't the comment user" 
+    elsif @comment.update(comment_params)
       flash[:success] = "Comment updated"
     else
       flash[:warning] = "You can't make a blank comment"
