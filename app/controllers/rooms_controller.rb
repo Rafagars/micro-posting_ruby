@@ -14,7 +14,7 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_parameters)
     if already_exist?
-      flash[:warning] = "Room name already exists"
+      flash[:warning] = "Room #{@room.name} already exists"
       redirect_to rooms_path
     elsif @room.save
       flash[:success] = "Room #{@room.name} was created successfully"
