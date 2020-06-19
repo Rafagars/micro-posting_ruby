@@ -12,17 +12,15 @@ class RoomsController < ApplicationController
   end
 
   def create
-    if @room == nil
+    @room = Room.new(room_parameters)
+    if already_exist?
       flash[:warning] = "Room name already exists"
       redirect_to rooms_path
-    else 
-      @room = Room.new(room_parameters)
-      if @room.save
-        flash[:success] = "Room #{@room.name} was created successfully"
-        redirect_to rooms_path
-      else
-        render :new
-      end
+    elsif @room.save
+      flash[:success] = "Room #{@room.name} was created successfully"
+      redirect_to rooms_path
+    else
+      render :new
     end
   end
 
@@ -64,5 +62,9 @@ class RoomsController < ApplicationController
 
   def room_parameters
     params.require(:room).permit(:name)
+  end
+
+  def already_exist?
+    Room.where(name: @room.name).exists?
   end
 end
