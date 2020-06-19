@@ -13,7 +13,7 @@
   <% if post_already_liked(@post.id) %>
       <span class="like"><%= link_to '', post_likes_path(@post), method: :post, class: 'fas fa-heart' , data: {controller: 'heart', action: 'click->heart#unlike'} %> <%= @post.likes.count %></span>
   <% else  %>
-      <span class="like><%= link_to '', post_likes_path(@post), method: :post, class: 'far fa-heart' , data: {controller: 'heart', action: 'click->heart#like'} %> <%= @post.likes.count %></span>
+      <span class="like"><%= link_to '', post_likes_path(@post), method: :post, class: 'far fa-heart' , data: {controller: 'heart', action: 'click->heart#like'} %> <%= @post.likes.count %></span>
   <% end %>
   </p>
     <p>
