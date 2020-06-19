@@ -4,6 +4,12 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
     like(){
-        this.element.classList.toggle('far');
+        this.element.classList.remove('far');
+        this.element.classList.add('fas');
+    }
+
+    unlike(){
+        this.element.classList.remove('fas');
+        this.element.classList.add('far');
     }
 }
