@@ -16,7 +16,7 @@
   <body>
     <%= render 'layouts/header' %>
     <br>
-    <div class="container">
+    <div class="container content">
 
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -24,5 +24,11 @@
 
       <%= yield %>
     </div>
+     <hr>
+    <footer class="footer">
+      <div class="container">
+        Rafael Garcia 2020
+      </div>
+    </footer>
   </body>
 </html>
