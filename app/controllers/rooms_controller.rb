@@ -12,7 +12,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(params[room_parameters])
+    @room = Room.new(room_parameters)
     if @room.save
       flash[:success] = "Room #{@room.name} was created successfully"
       redirect_to rooms_path
@@ -36,6 +36,19 @@ class RoomsController < ApplicationController
   def show
     @room_message = RoomMessage.new(room: @room)
     @room_messages = @room.room_messages.includes(:user)
+  end
+
+  def destroy
+    if current_user.admin
+      @room.room_messages.destroy_all
+      if @room.destroy
+        flash[:success] = "Room deleted"
+        redirect_to rooms_path
+      else
+        flash[:danger] = "Error deleting room"
+        redirect_to @room
+      end
+    end
   end
 
   protected
