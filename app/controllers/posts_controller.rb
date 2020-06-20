@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if !user_signed_in?
       redirect_to root_path
     end
-    @posts = Post.paginate(page: params[:page])
+    @posts = Post.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.paginate(page: params[:page])
+    @comments = @post.comments.paginate(page: params[:page], per_page: 5)
   end
 
   def edit
