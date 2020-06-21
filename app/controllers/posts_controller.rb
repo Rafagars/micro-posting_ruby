@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if !user_signed_in?
       redirect_to root_path
     end
-    @posts = Post.paginate(page: params[:page], per_page: 5)
+    @posts = Post.paginate(page: params[:page], per_page: 5).with_rich_text_content_and_embeds
   end
 
   def new
