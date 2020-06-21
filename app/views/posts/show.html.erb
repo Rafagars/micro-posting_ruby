@@ -15,6 +15,7 @@
   <% else  %>
       <span class="like"><%= link_to '', post_likes_path(@post), method: :post, class: 'far fa-heart' , data: {controller: 'heart', action: 'click->heart#like'} %> <%= @post.likes.count %></span>
   <% end %>
+    <span><%= social_share_button_tag(@post.title) %></span>
   </p>
     <p>
       <small>
@@ -22,7 +23,7 @@
       Created: <%= local_time_ago(@post.created_at) %>
         <% if @post.created_at != @post.updated_at %>
          | Updated: <%= local_time_ago(@post.updated_at) %>
-        <%end %>
+        <% end %>
       </small>
     </p>
 

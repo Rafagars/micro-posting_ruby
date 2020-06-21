@@ -35,6 +35,10 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if current_user.id != @post.user_id 
+      flash[:warning] = "You aren't the post user"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def update

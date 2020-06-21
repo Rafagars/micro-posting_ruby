@@ -28,6 +28,7 @@
     <% end %>
       <span><%= link_to '', post_path(post), class: 'far fa-comment' %> <%= post.comments.count %> comments </span>
 
+      <span><%= social_share_button_tag(post.title) %></span>
     <small>
       <div>
       Post by: <%= link_to post.user.name, user_path(post.user) %>

@@ -14,6 +14,7 @@
 //= require bootstrap
 //= require rails-ujs
 //= require local-time
+//= require social-share-button
 //= require activestorage
 //= require turbolinks
 //= require_tree .
