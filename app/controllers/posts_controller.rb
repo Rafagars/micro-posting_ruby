@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   include ApplicationHelper
   before_action :authenticate_user!
+  before_action :set_post, only: [:edit, :update, :show, :destroy]
 
   def index
     if !user_signed_in?
@@ -29,12 +30,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @comments = @post.comments.paginate(page: params[:page], per_page: 5)
   end
 
   def edit
-    @post = Post.find(params[:id])
     if current_user.id != @post.user_id 
       flash[:warning] = "You aren't the post user"
       redirect_back(fallback_location: root_path)
@@ -42,7 +41,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
     if current_user.id != @post.user_id 
       flash[:warning] = "You aren't the post user"
       redirect_to root_path
@@ -57,7 +55,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.comments.destroy_all
     if @post.destroy
       flash[:success] = "Post deleted"
@@ -70,6 +67,10 @@ class PostsController < ApplicationController
 
 
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :content)
