@@ -12,46 +12,7 @@
 <!-- All Comments -->
 <div id="comments">
   <% @comments.each do |comment| %>
-    <div id="<%= dom_id(comment) %>" class="comment" data-controller="edit">
-      <img src="<%= comment.user.gravatar_url %>" class="avatar">
-      <h5><%= link_to comment.user.name, user_path(comment.user)  %></h5>
-      <p data-target="edit.body"><%= comment.body %></p>
-      <!-- Form to edit comment. Hidden for default -->
-      <div class="d-none">
-        <%= form_for( comment, data: {controller: "characters", action: "ajax:beforeSend->characters#submit", target: "edit.form" }, url: post_comment_path(post_id: @post.id, id: comment.id), method: :patch)do |f| %>
-            <%= f.text_area :body,  size: "100x2", data: { target: "characters.body", action: "keyup->characters#update"} %>
-            <p>
-            <%= f.submit "Comment", class:'btn btn-primary'%>
-
-            <span data-target="characters.characterCount"></span>
-            </p>
-        <% end %>
-      </div>
-      <!-- -->
-      <% if current_user == comment.user or current_user.admin %>
-        <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
-                    class: 'float-right', data: {confirm: "Are you sure that you want to delete it?"}  %>
-        <a href="" data-action="click->edit#toggle" class="float-right">Edit |</a>
-      <% end %>
-
-      <% if comment_already_liked(comment.id) %>
-        <span class="like">
-        <%= link_to '', post_comment_hearts_path(post_id: @post.id, comment_id: comment.id), method: :post, class: 'fas fa-heart' , data: {controller: 'heart', action: 'click->heart#unlike'} %>
-                <%= comment.hearts.count %>
-        </span>
-      <% else %>
-        <span class="like">
-        <%= link_to '', post_comment_hearts_path(post_id: @post.id, comment_id: comment.id), method: :post, class: 'far fa-heart' , data: {controller: 'heart', action: 'click->heart#like'} %>
-                  <%= comment.hearts.count %>
-        </span>
-      <% end %>
-
-      <small>
-        <p>
-        Created: <%= local_time_ago(comment.created_at) %> | Updated: <%= local_time_ago(comment.updated_at) %>
-        </p>
-      </small>
-    </div>
+    <%= render comment %>
   <% end %>
 </div>
 <!-- -->
