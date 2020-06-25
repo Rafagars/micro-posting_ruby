@@ -1,41 +1,15 @@
+<!-- Post Section -->
 <div class="post">
-  <h2 class="text-center"><%= @post.title %></h2>
-
-  <p><%= @post.content %></p>
-
-  <% if current_user == @post.user or current_user.admin %>
-    <h6><%= link_to "Delete", post_path(@post), method: :delete, class: ' delete float-right',
-                    data: {confirm: "Are you sure that you want to delete this post?"} %></h6>
-    <h6><%= link_to "Edit", edit_post_path(@post), class: 'float-right' %> </h6>
-  <% end %>
-
-  <p>
-  <% if post_already_liked(@post.id) %>
-      <span class="like"><%= link_to '', post_likes_path(@post), method: :post, class: 'fas fa-heart' , data: {controller: 'heart', action: 'click->heart#unlike'} %> <%= @post.likes.count %></span>
-  <% else  %>
-      <span class="like"><%= link_to '', post_likes_path(@post), method: :post, class: 'far fa-heart' , data: {controller: 'heart', action: 'click->heart#like'} %> <%= @post.likes.count %></span>
-  <% end %>
-    <span><%= social_share_button_tag(@post.title) %></span>
-  </p>
-    <p>
-      <small>
-      Post by: <%= link_to @post.user.name, user_path(@post.user) %>
-      Created: <%= local_time_ago(@post.created_at) %>
-        <% if @post.created_at != @post.updated_at %>
-         | Updated: <%= local_time_ago(@post.updated_at) %>
-        <% end %>
-      </small>
-    </p>
-
+  <%= render @post %>
 </div>
-
+<!-- Comments Section -->
 <p> Comments (<%= @comments.count %>)</p>
 
 <% if user_signed_in? %>
   <!-- Form for new comments -->
   <%= render 'comments/form' %>
 <% end %>
-
+<!-- All Comments -->
 <div id="comments">
   <% @comments.each do |comment| %>
     <div id="<%= dom_id(comment) %>" class="comment" data-controller="edit">
@@ -80,7 +54,7 @@
     </div>
   <% end %>
 </div>
-
+<!-- -->
 
 <div class="digg_pagination offset-4">
   <%= will_paginate @comments %>
