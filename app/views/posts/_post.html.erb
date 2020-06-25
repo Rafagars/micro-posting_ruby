@@ -1,0 +1,29 @@
+<!-- Since it was almost the same on all views -->
+    <h2 class="text-center"><%= link_to post.title, post_path(post) %></h2>
+
+    <p class=""><%= post.content %></p>
+
+    <% if current_user == post.user or current_user.admin %>
+      <h6><%= link_to "Delete", post_path(post), method: :delete, class: ' delete float-right',
+                      data: {confirm: "Are you sure that you want to delete this post?"} %></h6>
+      <h6><%= link_to "Edit", edit_post_path(post), class: 'float-right' %> </h6>
+    <% end %>
+
+
+    <% if post_already_liked(post.id) %>
+      <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'fas fa-heart' , data: {controller: 'heart', action: 'click->heart#unlike'}  %> <%= post.likes.count %></span>
+    <% else  %>
+      <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'far fa-heart' , data: {controller: 'heart', action: 'click->heart#like'} %> <%= post.likes.count %></span>
+    <% end %>
+      <span><%= link_to '', post_path(post), class: 'far fa-comment' %> <%= post.comments.count %> comments </span>
+
+      <span><%= social_share_button_tag(post.title) %></span>
+    <small>
+      <div>
+      Post by: <%= link_to post.user.name, user_path(post.user) %>
+      Created: <%= local_time_ago(post.created_at) %>
+        <% if post.created_at != post.updated_at %>
+         | Updated: <%= local_time_ago(post.updated_at) %>
+        <%end %>
+      </div>
+    </small>
