@@ -31,10 +31,16 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments.paginate(page: params[:page], per_page: 5)
+    respond_to do |format|
+      format.html
+      format.json {render :json => {
+          "title": @post.title, "content": @post.content, "user_id": @post.user_id, "likes": @post.likes.count, "comment": @post.comments.all
+      } }
+    end
   end
 
   def edit
-    if current_user.id != @post.user_id 
+    if current_user.id != @post.user_id
       flash[:warning] = "You aren't the post user"
       redirect_back(fallback_location: root_path)
     end
