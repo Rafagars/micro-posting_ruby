@@ -5,6 +5,9 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+ 
+# Permitted locales available for the application
+I18n.available_locales = [:en, :es]
 
 module MicroPosting
   class Application < Rails::Application

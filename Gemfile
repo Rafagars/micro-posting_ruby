@@ -84,3 +84,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Use I18n for internationalization 
+gem "i18n", "~> 1.8"

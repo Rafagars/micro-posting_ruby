@@ -260,6 +260,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   devise
+  i18n (~> 1.8)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
