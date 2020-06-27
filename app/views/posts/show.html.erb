@@ -4,7 +4,7 @@
 </div>
 
 <!-- Comments Section -->
-<p> Comments (<%= @comments.count %>)</p>
+<p> <%= t("comment") %>s (<%= @comments.count %>)</p>
 
 <% if user_signed_in? %>
   <!-- Form for new comments -->

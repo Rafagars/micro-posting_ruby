@@ -30,4 +30,37 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      post:
+        title: "Title"
+        content: "Content"
+      comment:
+        body: "Body"
+  forms:
+    messages:
+      success: "Operation succeeded"
+    buttons:
+      delete: "Delete"
+      edit: "Edit"
+      post: "Post"
+      confirm: "Are you sure?"
+  menu:
+    new_post: "New Post"
+  posts:
+    edit:
+      title: "Edit Post"
+    new:
+      title: "New Post"
+  created: "Created"
+  updated: "Updated"
+  users:
+    profile: "Profile"
+    settings: "Settings"
+    logout: "Logout"
+  'sign in': 'Sign In'
+  'sign up': 'Sign up'
+  welcome: "Welcome to "
+  comment: "Comment"
+  remember: "Rememeber me"
+  forgot: "Forgot your password?"

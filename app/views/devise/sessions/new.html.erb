@@ -1,5 +1,5 @@
 <div id="login" class="mx-auto d-block">
-  <h1>Log in</h1>
+  <h1><%= t("sign in") %></h1>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <label class="label"><i class="fas fa-envelope"></i></label>
@@ -10,13 +10,13 @@
 
     <div class="remember">
       <% if devise_mapping.rememberable? %>
-        <span>Remember me</span>
+        <span><%= t("remember") %></span>
         <%= f.check_box :remember_me %>
       <% end %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit t("sign in") %>
     </div>
   <% end %>
 

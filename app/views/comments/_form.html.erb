@@ -2,7 +2,7 @@
 
       <%= f.text_area :body,  class: "form-control", data: { target: "characters.body", action: "keyup->characters#update"} %>
     <p>
-      <%= f.submit "Comment", class:'btn btn-primary'%>
+      <%= f.submit t("comment"), class:'btn btn-primary'%>
 
       <span data-target="characters.characterCount"></span>
     </p>

@@ -15,9 +15,9 @@
       </div>
       <!-- -->
       <% if current_user == comment.user or current_user.admin %>
-        <%= link_to "Delete", post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
-                    class: 'float-right', data: {confirm: "Are you sure that you want to delete it?"}  %>
-        <a href="" data-action="click->edit#toggle" class="float-right">Edit |</a>
+        <%= link_to t("forms.buttons.delete"), post_comment_path(post_id: @post.id, id: comment.id), method: :delete,
+                    class: 'float-right', data: {confirm: t("forms.buttons.confirm")}  %>
+        <a href="" data-action="click->edit#toggle" class="float-right"><%= t("forms.buttons.edit") %> |</a>
       <% end %>
 
       <% if comment_already_liked(comment.id) %>
@@ -34,7 +34,7 @@
 
       <small>
         <p>
-        Created: <%= local_time_ago(comment.created_at) %> | Updated: <%= local_time_ago(comment.updated_at) %>
+        <%= t("created") %> <%= local_time_ago(comment.created_at) %> | <%= t("updated") %> <%= local_time_ago(comment.updated_at) %>
         </p>
       </small>
 </div>

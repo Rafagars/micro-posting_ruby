@@ -1,5 +1,5 @@
 <div id="signup" class="mx-auto d-block">
-  <h1>Sign up</h1>
+  <h1><%= t("sign up") %></h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -17,7 +17,7 @@
     <%= f.password_field :password_confirmation, class: 'form-control', placeholder: :password_confirmation %>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit t("sign up") %>
     </div>
   <% end %>
 

@@ -1,0 +1,35 @@
+es:
+  activerecord:
+    attributes:
+      post:
+        title: "Titulo"
+        content: "Contenido"
+      comment:
+        body: "Cuerpo"
+  forms:
+    messages:
+      success: "Operacion exitosa"
+    buttons:
+      delete: "Borrar"
+      edit: "Editar"
+      post: "Postear"
+      confirm: "¿Esta seguro?"
+  menu:
+    new_post: "Nuevo Post"
+  posts:
+    edit:
+      title: "Editar Post"
+    new:
+      title: "Nuevo Post"
+  created: "Creado"
+  updated: "Actualizado"
+  users:
+    profile: "Perfil"
+    settings: "Ajustes"
+    logout: "Cerrar Sesion"
+  'sign in': 'Iniciar Sesion'
+  'sign up': 'Registrese'
+  welcome: "Bienvenidos a "
+  comment: "Comentario"
+  remember: "Recuerdame"
+  forgot: "¿Olvido su contraseña?"
