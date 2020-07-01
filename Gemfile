@@ -87,3 +87,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use I18n for internationalization 
 gem "i18n", "~> 1.8"
+
+gem "ransack", "~> 2.3"

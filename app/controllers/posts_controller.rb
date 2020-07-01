@@ -2,13 +2,14 @@ class PostsController < ApplicationController
 
   include ApplicationHelper
   before_action :authenticate_user!
+  before_action :set_query
   before_action :set_post, only: [:edit, :update, :show, :destroy]
 
   def index
     if !user_signed_in?
       redirect_to root_path
     end
-    @posts = Post.paginate(page: params[:page], per_page: 5).with_rich_text_content_and_embeds
+    @posts = @q.result.paginate(page: params[:page], per_page: 5).with_rich_text_content_and_embeds
   end
 
   def new
@@ -70,6 +71,10 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def set_query
+    @q = Post.ransack(params[:q])
   end
 
   def post_params

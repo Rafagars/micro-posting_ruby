@@ -3,6 +3,8 @@ class RoomsController < ApplicationController
   # @rooms = all rooms
   # @room = current room when applicable
   before_action :load_entities
+  before_action :set_query
+
   def index
     @rooms = Room.all
   end
@@ -66,5 +68,9 @@ class RoomsController < ApplicationController
 
   def already_exist?
     Room.where(name: @room.name).exists?
+  end
+
+  def set_query
+    @q = Post.ransack(params[:q])
   end
 end
