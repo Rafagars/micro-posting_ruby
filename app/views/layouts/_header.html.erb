@@ -4,13 +4,15 @@
     <nav class="collapse navbar-collapse d-flex flex-row-reverse">
       <div class="navbar-nav">
         <% if user_signed_in? %>
-        <div class="nav-item nav-link">
+        <div class="nav-item nav-link" data-controller="search">
           <%= search_form_for @q do |f| %>
-            <%= f.search_field :title_or_user_name_cont, placeholder: t("search") + ' Post', class: 'form-control' %>
+            <%= f.search_field :title_or_user_name_cont, placeholder: t("search") + ' Post', 
+            class: 'form-control d-none', data: { target: 'search.bar'} %>
+            <%= f.label '', class: 'fas fa-search link', data: { action: 'click->search#toggle' } %>
             <% f.submit %>
           <% end %>
         </div>
-          <%= link_to 'Chat', rooms_path, class: 'chat-link' %>
+          <%= link_to 'Chat', rooms_path, class: 'link' %>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="<%= current_user.gravatar_url %>" class="menu-avatar">
