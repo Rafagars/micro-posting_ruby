@@ -2,7 +2,6 @@ class PostsController < ApplicationController
 
   include ApplicationHelper
   before_action :authenticate_user!
-  before_action :set_query
   before_action :set_post, only: [:edit, :update, :show, :destroy]
 
   def index
@@ -71,10 +70,6 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def set_query
-    @q = Post.ransack(params[:q])
   end
 
   def post_params

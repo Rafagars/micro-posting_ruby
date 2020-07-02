@@ -1,8 +1,6 @@
 @import "bootstrap";
 
 body {
-  background-color: #262c32;
-  color: white;
   display: flex;
   flex-direction: column;
 }
@@ -16,9 +14,9 @@ html, body {
   flex: 1 0 auto;
 }
 .footer {
+  background-color: ghostwhite;
   flex-shrink: 0;
   min-height: 50px;
-  background-color: #24262d;
 }
 
 body a:hover {
@@ -26,18 +24,16 @@ body a:hover {
 }
 
 header {
-  background-color: #24262d;
+  background-color: ghostwhite;
   flex: 1 0 auto;
   max-height: 100px;
 }
 
 header a {
-  color: white;
   padding: 5px;
 }
 
 header a:hover{
-  color: gray;
   text-decoration: none;
 }
 
@@ -49,30 +45,25 @@ header a:hover{
 
 body .jumbotron {
   margin-top: 2%;
-  background-color: #2b3138;
 }
 
 body a {
   text-decoration: none;
 }
 
-
-
 #login, #signup {
   max-width: 400px;
-  background-color: #2b3138;
   box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
   margin: 5% 33%;
 }
 
 #login h1, #signup h1 {
   text-align: center;
-  color: whitesmoke;
-  background-color: #24262d;
   font-size: 24px;
   padding: 20px 0 20px 0;
   border-bottom: 1px solid #dee0e4;
-
+  background-color: cornflowerblue;
+  color: whitesmoke;
 }
 
 
@@ -88,16 +79,14 @@ body a {
   width: 80%;
   height: 30px;
   border: 1px solid #dee0e4;
-  background-color: #2b3138;
   margin: 5px 15px 20px 5px;
-  color: white;
 }
 
 #login form input[type="submit"],  #signup form input[type="submit"]{
   width: 350px;
   padding: 10px;
   margin: 15px 0 5px 0;
-  background-color: #24262d;
+  background-color: cornflowerblue;
   border: 0;
   cursor: pointer;
   font-weight: bold;
@@ -115,7 +104,7 @@ body a {
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: #24262d;
+  background-color: cornflowerblue;
   color: #ffffff;
 }
 
@@ -128,24 +117,24 @@ body a {
 }
 
 .card {
-  background-color: #2b3138;
   border: 2px double #22272c;
 }
-
 
 .field {
   background-color: whitesmoke;
   color: black;
 }
 
-#nav-posts{
-  margin-top: 5%;
+.dropdown-toggle, .dropdown-toggle:visited{
+  background-color: ghostwhite;
 }
 
+.dropdown-toggle:hover, .dropdown-toggle:active, .dropdown-menu{
+  background-color: ghostwhite;
+}
 .post, .comment {
   box-sizing: content-box;
   border: 2px double #22272c;
-  background-color: #2b3138;
   margin-bottom: 5px;
   padding: 20px;
 }
@@ -212,18 +201,68 @@ body a {
 }
 
 
-.dropdown-toggle, .dropdown-toggle:visited{
-  background-color: #24262d;
-}
-
-.dropdown-toggle:hover, .dropdown-toggle:active, .dropdown-menu{
-  background-color: #262c32;
-}
-
-.dropdown-item{
-  color:white;
-}
-
 .menu-avatar{
   width: 35px;
+}
+
+/*** Light-Theme ***/
+
+/*** Dark-Theme ***/
+.dark-theme{
+  background-color: #262c32;
+  color: white;
+  header{
+    background-color: #24262d;
+    a {
+      color: white;
+      &:hover {
+        color: gray;
+      }
+    }
+  }
+  .jumbotron{
+    background-color: #2b3138;
+  }
+  .card {
+    background-color: #2b3138;
+  }
+  .post, .comment {
+    background-color: #2b3138;
+  }
+  .btn-light{
+    background-color: #24262d;
+    color: white;
+  }
+  .dropdown-toggle, .dropdown-toggle:visited{
+    background-color: #24262d;
+  }
+
+  .dropdown-toggle:hover, .dropdown-toggle:active, .dropdown-menu{
+    background-color: #262c32;
+  }
+
+  .dropdown-item{
+    color:white;
+  }
+  .footer {
+    background-color: #24262d;
+  }
+  #login, #signup {
+    background-color: #2b3138;
+    h1 {
+      background-color: #24262d;
+      color: whitesmoke;
+    }
+    form .label {
+      background-color: #24262d;
+    }
+  }
+  #login form input[type="password"], #login form input[type="text"], #login form input[type="email"],
+  #signup form input[type="password"], #signup form input[type="text"], #signup form input[type="email"]{
+    background-color: #2b3138;
+    color: white;
+  }
+  #login form input[type="submit"],  #signup form input[type="submit"]{
+    background-color: #24262d
+  }
 }

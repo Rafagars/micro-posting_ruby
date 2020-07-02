@@ -3,6 +3,7 @@
     <h1><%= link_to 'Micro-Posting', root_path %></h1>
     <nav class="collapse navbar-collapse d-flex flex-row-reverse">
       <div class="navbar-nav">
+        <button data-action="click->style#mode" class="far fa-moon btn btn-light"></button>
         <% if user_signed_in? %>
         <div class="nav-item nav-link" data-controller="search">
           <%= search_form_for @q do |f| %>
@@ -14,7 +15,7 @@
         </div>
           <%= link_to 'Chat', rooms_path, class: 'link' %>
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="<%= current_user.gravatar_url %>" class="menu-avatar">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
