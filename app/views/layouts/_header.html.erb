@@ -7,8 +7,8 @@
         <% if user_signed_in? %>
         <div class="nav-item nav-link" data-controller="search">
           <%= search_form_for @q do |f| %>
-            <%= f.search_field :title_or_user_name_cont, placeholder: t("search") + ' Post', 
-            class: 'form-control d-none', data: { target: 'search.bar'} %>
+            <div class="btn btn-light"><%= f.search_field :title_or_user_name_cont, placeholder: t("search") + ' Post',
+            class: 'form-control d-none', data: { target: 'search.bar'} %></div>
             <%= f.label '', class: 'fas fa-search link', data: { action: 'click->search#toggle' } %>
             <% f.submit %>
           <% end %>
