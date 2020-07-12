@@ -4,9 +4,9 @@
     <p class=""><%= post.content %></p>
 
     <% if current_user == post.user or current_user.admin %>
-      <h6><%= link_to t("forms.buttons.delete"), post_path(post), method: :delete, class: ' delete float-right',
+      <h6><%= link_to '', post_path(post), method: :delete, class: 'fas fa-trash delete float-right',
                       data: {confirm: t("forms.buttons.confirm")} %></h6>
-      <h6><%= link_to t("forms.buttons.edit"), edit_post_path(post), class: 'float-right' %> </h6>
+      <h6><%= link_to '', edit_post_path(post), class: 'fas fa-edit float-right' %> </h6>
     <% end %>
 
 
