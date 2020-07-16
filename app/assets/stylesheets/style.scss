@@ -272,3 +272,21 @@ body a {
     background: #262c32
   }
 }
+
+
+@media (min-width: 768px) {
+  .sidebar {
+    height: 100vh;
+    padding: 20px; }
+  .main{
+    margin-left: 20%;
+  }
+}
+@media (min-width: 1200px) {
+  .sidebar {
+    height: 100vh;
+    padding: 20px; }
+  .main{
+    margin-left: 20%;
+  }
+}

@@ -1,36 +1,38 @@
 <% provide(:title, @user.name) %>
-<div class="gravatar float-left">
-  <% if user_signed_in? %>
-    <a href="http://gravatar.com/emails" target="_blank"><img src="<%= @user.gravatar_url %>"></a>
-  <% else %>
-    <img src="<%= @user.gravatar_url %>">
-  <% end %>
-</div>
+<nav class="sidebar col-md-3 float-left">
+  <div class="gravatar float-left">
+    <% if user_signed_in? %>
+      <a href="http://gravatar.com/emails" target="_blank"><img src="<%= @user.gravatar_url %>"></a>
+    <% else %>
+      <img src="<%= @user.gravatar_url %>">
+    <% end %>
+  </div>
+  <h4>@<%= @user.name %></h4>
   <% if @user.admin %>
-    <h1><%= @user.name %>'s  [Admin]</h1>
-  <% else %>
-    <h1><%= @user.name %>'s Profile</h1>
+    <h5>[Admin]</h5>
   <% end %>
   <p>Nº posts: <%= @user.posts.count %></p>
-<small>
-  <p>
-    <span class="fas fa-heart" style="margin-right: 5px;">&ensp;<%= @user.likes.count %> posts liked</span>
-    <span class="fas fa-comment">&ensp;<%= @user.comments.count %> posts commented</span>
-  </p>
-</small>
-
-
-<br>
-<!-- Shows all User's posts -->
-<% @posts.each do |post| %>
   <br>
-  <div class="card mb-2">
-    <div class="card-body">
-      <%= render post %>
-    </div>
-  </div>
-<% end %>
+  <small>
+    <p>
+      <span class="fas fa-heart"> <%= @user.likes.count %> posts liked</span>
+      <span class="fas fa-comment"> <%= @user.comments.count %> posts commented</span>
+    </p>
+  </small>
+</nav>
 
-<div class="digg_pagination offset-4">
-  <%= will_paginate @posts %>
+<div class="main col-9">
+  <!-- Shows all User's posts -->
+  <% @posts.each do |post| %>
+    <br>
+    <div class="card mb-2">
+      <div class="card-body">
+        <%= render post %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="digg_pagination offset-4">
+    <%= will_paginate @posts %>
+  </div>
 </div>
