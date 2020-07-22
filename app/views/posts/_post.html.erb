@@ -3,27 +3,32 @@
 
     <p class=""><%= post.content %></p>
 
-    <% if current_user == post.user or current_user.admin %>
-      <h6><%= link_to t("forms.buttons.delete"), post_path(post), method: :delete, class: ' delete float-right',
-                      data: {confirm: t("forms.buttons.confirm")} %></h6>
-      <h6><%= link_to t("forms.buttons.edit"), edit_post_path(post), class: 'float-right' %> </h6>
+    <% if user_signed_in? %>
+      <% if current_user == post.user or current_user.admin %>
+        <h6><%= link_to t("forms.buttons.delete"), post_path(post), method: :delete, class: ' delete float-right',
+                        data: {confirm: t("forms.buttons.confirm")} %></h6>
+        <h6><%= link_to t("forms.buttons.edit"), edit_post_path(post), class: 'float-right' %> </h6>
+      <% end %>
+
+
+      <% if post_already_liked(post.id) %>
+        <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'fas fa-heart' , data: {controller: 'heart', action: 'click->heart#unlike'}  %> <%= post.likes.count %></span>
+      <% else %>
+        <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'far fa-heart' , data: {controller: 'heart', action: 'click->heart#like'} %> <%= post.likes.count %></span>
+      <% end %>
+    <% else %>
+        <span class="like"><a href="" class="far fa-heart"></a> <%= post.likes.count %></span>
     <% end %>
 
+    <span><%= link_to '', post_path(post), class: 'far fa-comment' %> <%= post.comments.count %> </span>
 
-    <% if post_already_liked(post.id) %>
-      <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'fas fa-heart' , data: {controller: 'heart', action: 'click->heart#unlike'}  %> <%= post.likes.count %></span>
-    <% else  %>
-      <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'far fa-heart' , data: {controller: 'heart', action: 'click->heart#like'} %> <%= post.likes.count %></span>
-    <% end %>
-      <span><%= link_to '', post_path(post), class: 'far fa-comment' %> <%= post.comments.count %> </span>
-
-      <span><%= social_share_button_tag(post.title) %></span>
+    <span><%= social_share_button_tag(post.title) %></span>
     <small>
       <div>
       Post by: <%= link_to post.user.name, user_path(post.user) %>
       <%= t("created") %> <%= local_time_ago(post.created_at) %>
         <% if post.created_at != post.updated_at %>
          | <%= t("updated") %> <%= local_time_ago(post.updated_at) %>
-        <%end %>
+        <% end %>
       </div>
     </small>

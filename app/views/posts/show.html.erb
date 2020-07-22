@@ -9,6 +9,8 @@
 <% if user_signed_in? %>
   <!-- Form for new comments -->
   <%= render 'comments/form' %>
+<% else %>
+  <h2><%= t("show_comment_warning") %></h2>
 <% end %>
 <!-- All Comments -->
 <div id="comments">

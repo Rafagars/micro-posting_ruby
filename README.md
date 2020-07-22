@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Micro-Posting
 
-Things you may want to cover:
+A Blog-ish web app with group chat.
 
 * Ruby version
-
+Ruby 2.6.3
 * System dependencies
-
+Rails 6 and Image Magick to be able to use ActionText without any problem. Redis for the group chat
 * Configuration
+in the terminal run $ bundle install and $ yarn install to install all the dependecies for the app
+* Database creation & Database initialization
+In the terminal run $ rails db:migrate
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
