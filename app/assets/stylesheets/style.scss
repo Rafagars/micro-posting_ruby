@@ -51,66 +51,59 @@ body a {
   text-decoration: none;
 }
 
-#login, #signup {
+.session {
   max-width: 400px;
   box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
   margin: 5% 33%;
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+    background-color: cornflowerblue;
+    color: whitesmoke;
+  }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+  }
+  form input[type="submit"]{
+    width: 350px;
+    padding: 10px;
+    margin: 15px 0 5px 0;
+    background-color: cornflowerblue;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  form input[type="submit"]:hover {
+    background-color: #2b3138;
+    transition: background-color 0.2s;
+  }
+  form .label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: cornflowerblue;
+    color: #ffffff;
+  }
+  a {
+    padding: 10px;
+  }
 }
 
-#login h1, #signup h1 {
-  text-align: center;
-  font-size: 24px;
-  padding: 20px 0 20px 0;
-  border-bottom: 1px solid #dee0e4;
-  background-color: cornflowerblue;
-  color: whitesmoke;
-}
-
-
-#login form, #signup form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 20px;
-}
-
-#login form input[type="password"], #login form input[type="text"], #login form input[type="email"],
-#signup form input[type="password"], #signup form input[type="text"], #signup form input[type="email"] {
+.session form input[type="password"], .session form input[type="text"], .session form input[type="email"] {
   width: 80%;
   height: 30px;
   border: 1px solid #dee0e4;
   margin: 5px 15px 20px 5px;
 }
 
-#login form input[type="submit"],  #signup form input[type="submit"]{
-  width: 350px;
-  padding: 10px;
-  margin: 15px 0 5px 0;
-  background-color: cornflowerblue;
-  border: 0;
-  cursor: pointer;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-#login form input[type="submit"]:hover, #signup form input[type="submit"]:hover {
-  background-color: #2b3138;
-  transition: background-color 0.2s;
-}
-
-#login form .label, #signup form .label{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  background-color: cornflowerblue;
-  color: #ffffff;
-}
-
-#login a, #signup a {
-  padding: 10px;
-}
 
 .remember {
   margin-left: 0;
@@ -140,8 +133,16 @@ body a {
   padding: 20px;
 }
 
-.delete {
-  margin-left: 5px;
+.far, .fas{
+  margin-right: 5px;
+}
+
+.fa-comment {
+  margin-left: 10px;
+}
+
+.delete{
+  margin-left: 15px;
 }
 
 .comment img {
@@ -206,6 +207,8 @@ body a {
   width: 35px;
 }
 
+
+
 /*** Light-Theme ***/
 
 /*** Dark-Theme ***/
@@ -248,7 +251,7 @@ body a {
   .footer {
     background-color: #24262d;
   }
-  #login, #signup {
+ .session {
     background-color: #2b3138;
     h1 {
       background-color: #24262d;
@@ -257,13 +260,33 @@ body a {
     form .label {
       background-color: #24262d;
     }
+   form input[type="submit"]{
+     background-color: #24262d
+   }
   }
-  #login form input[type="password"], #login form input[type="text"], #login form input[type="email"],
-  #signup form input[type="password"], #signup form input[type="text"], #signup form input[type="email"]{
+  .session form input[type="password"], .session form input[type="text"], .session form input[type="email"] {
     background-color: #2b3138;
     color: white;
   }
-  #login form input[type="submit"],  #signup form input[type="submit"]{
-    background-color: #24262d
+  .digg_pagination{
+    background: #262c32
+  }
+}
+
+
+@media (min-width: 768px) {
+  .sidebar {
+    height: 100vh;
+    padding: 20px; }
+  .main{
+    margin-left: 20%;
+  }
+}
+@media (min-width: 1200px) {
+  .sidebar {
+    height: 100vh;
+    padding: 20px; }
+  .main{
+    margin-left: 20%;
   }
 }

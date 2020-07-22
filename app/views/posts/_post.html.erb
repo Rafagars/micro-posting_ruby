@@ -3,13 +3,13 @@
 
     <p class=""><%= post.content %></p>
 
+
     <% if user_signed_in? %>
       <% if current_user == post.user or current_user.admin %>
         <h6><%= link_to t("forms.buttons.delete"), post_path(post), method: :delete, class: ' delete float-right',
                         data: {confirm: t("forms.buttons.confirm")} %></h6>
         <h6><%= link_to t("forms.buttons.edit"), edit_post_path(post), class: 'float-right' %> </h6>
       <% end %>
-
 
       <% if post_already_liked(post.id) %>
         <span class="like"><%= link_to '', post_likes_path(post), method: :post, class: 'fas fa-heart' , data: {controller: 'heart', action: 'click->heart#unlike'}  %> <%= post.likes.count %></span>
