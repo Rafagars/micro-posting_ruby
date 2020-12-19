@@ -6,6 +6,7 @@
 
         <%= link_to 'Posts', posts_path, class: 'nav-link' %>
         <% if user_signed_in? %>
+          <%= link_to 'Rooms', rooms_path, class: 'nav-link' %>
         <div class="nav-item nav-link" data-controller="search">
           <%= search_form_for @q do |f| %>
             <div class="btn btn-light"><%= f.search_field :title_or_user_name_cont, placeholder: t("search") + ' Post',
