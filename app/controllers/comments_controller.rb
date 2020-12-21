@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to post_path(@post)
     elsif @comment.body
-      flash[:warning] = "You can't make a blank comment"
+      flash[:warning] = t"comment.flash.warning"
       redirect_to post_path(@post)
     else
       flash[:danger] = "Error with the comment. Please try again or report the error"
@@ -28,11 +28,11 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     if current_user.id != @comment.user_id
-      flash[:warning] = "You aren't the comment user" 
+      flash[:warning] = t"comment.flash.warning"
     elsif @comment.update(comment_params)
-      flash[:success] = "Comment updated"
+      flash[:success] = t"comment.flash.updated"
     else
-      flash[:warning] = "You can't make a blank comment"
+      flash[:warning] = t"comment.flash.blank"
     end
     redirect_to @post
   end
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     if @comment.destroy
-      flash[:success] = "Comment deleted"
+      flash[:success] = t"comment.flash.deleted"
       redirect_to @post
     else
       flash[:danger] = "Comment cannot be deleted. Sorry :("

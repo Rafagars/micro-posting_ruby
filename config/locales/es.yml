@@ -24,7 +24,6 @@ es:
     flash:
       created: "Post creado!"
       updated: "Post actualizado"
-      deleted: "Post borrado"
       blank: "El titulo no puede estar vacio"
       warning: "Usted no es el usuario de este post"
   created: "Creado"
@@ -36,7 +35,13 @@ es:
   'sign in': 'Iniciar Sesion'
   'sign up': 'Registrese'
   welcome: "Bienvenidos a "
-  comment: "Comentario"
+  comment:
+    title: "Comentario"
+    flash:
+      updated: "Comentario actualizado"
+      deleted: "Comentario eliminado"
+      blank: "No puedes hacer un comentario vacio"
+      warning: "Usted no es el usuario del comentario"
   remember: "Recuerdame"
   forgot: "¿Olvido su contraseña?"
   search: "Buscar"

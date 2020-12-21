@@ -67,7 +67,13 @@ en:
   'sign in': 'Sign In'
   'sign up': 'Sign up'
   welcome: "Welcome to "
-  comment: "Comment"
+  comment:
+    title: "Comment"
+    flash:
+      updated: "Comment Updated"
+      deleted: "Comment Deleted"
+      blank: "You can't make a blank commen"
+      warning: "You aren't the comment's user"
   remember: "Rememeber me"
   forgot: "Forgot your password?"
   search: "Search"

@@ -25,7 +25,7 @@ export default class extends Controller {
 
     submit(event) {
         let count = this.bodyTarget.value.length;
-        if (count > 300 ){
+        if (count > 300 || count === 0){
             event.preventDefault();
         }
     }
