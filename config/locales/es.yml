@@ -21,6 +21,12 @@ es:
       title: "Editar Post"
     new:
       title: "Nuevo Post"
+    flash:
+      created: "Post creado!"
+      updated: "Post actualizado"
+      deleted: "Post borrado"
+      blank: "El titulo no puede estar vacio"
+      warning: "Usted no es el usuario de este post"
   created: "Creado"
   updated: "Actualizado"
   users:

@@ -52,6 +52,12 @@ en:
       title: "Edit Post"
     new:
       title: "New Post"
+    flash:
+      created: "Post created!"
+      updated: "Post updated"
+      deleted: "Post deleted"
+      blank: "Title can't be blank"
+      warning: "You aren't the post user"
   created: "Created"
   updated: "Updated"
   users:
