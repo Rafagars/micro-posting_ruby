@@ -45,4 +45,7 @@ es:
   remember: "Recuerdame"
   forgot: "¿Olvido su contraseña?"
   search: "Buscar"
+  notification:
+    post: "Hay un nuevo post"
+    comment: "Nuevo comentario en su post"
   show_comment_warning: "Inicie sesion si desea dejar un comentario"

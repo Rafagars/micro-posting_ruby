@@ -89,3 +89,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "i18n", "~> 1.8"
 
 gem "ransack", "~> 2.3"
+
+gem "noticed", "~> 1.2"

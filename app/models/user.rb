@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :hearts, dependent: :destroy
+  has_many :notifications, as: :recipient
 
   def to_param
     name #We replace id for name to be able to show it in the route

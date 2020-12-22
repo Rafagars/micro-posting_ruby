@@ -77,4 +77,7 @@ en:
   remember: "Rememeber me"
   forgot: "Forgot your password?"
   search: "Search"
+  notification:
+    post: "New post"
+    comment: "New comment on your post"
   show_comment_warning: "Log in if you want to leave a comment"

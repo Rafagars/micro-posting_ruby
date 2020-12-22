@@ -15,6 +15,7 @@
             <% f.submit %>
           <% end %>
         </div>
+          <%= link_to '', notifications_path, class: 'nav-link far fa-bell' %>
           <div class="dropdown">
             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="<%= current_user.gravatar_url %>" class="menu-avatar">
