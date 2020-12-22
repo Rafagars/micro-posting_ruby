@@ -1,6 +1,7 @@
 # To deliver this notification:
 #
-PostNotification.with(post: @post).deliver(User.all)
+# PostNotification.with(post: @post).deliver_later(User.all)
+# PostNotification.with(post: @post).deliver(User.all)
 
 class PostNotification < Noticed::Base
   # Add your delivery methods
@@ -13,15 +14,15 @@ class PostNotification < Noticed::Base
 
   # Add required params
   #
-  param :post
+  #param :title
 
   # Define helper methods to make rendering easier.
   #
   def message
-    t("notification.post")
+    t("notification.post") + ":"
   end
   #
   def url
-    post_path(params[:post])
+    posts_path()
   end
 end

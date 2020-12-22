@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = t("posts.flash.created")
+      PostNotification.with(post: @post).deliver_later(User.all)
       redirect_to posts_path
     elsif @post.title
       flash.now[:warning] = t"posts.flash.blank"
